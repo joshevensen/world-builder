@@ -6,9 +6,9 @@ export interface ITemplate {
   category: Category;
   name: string;
   description: string | null;
-  fields: Field[];
-  created_at: Date;
-  updated_at: Date;
+  fields?: Field[];
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export class Template implements ITemplate {

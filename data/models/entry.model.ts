@@ -4,14 +4,14 @@ import { Template } from "./template.model";
 
 export interface IEntry {
   id: number;
-  template: Template;
+  template?: Template;
   category: Category;
   name: string;
   description: string | null;
-  fields: Field[];
-  relationships: Entry[];
-  created_at: Date;
-  updated_at: Date;
+  fields?: Field[];
+  relationships?: Entry[];
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export class Entry implements IEntry {
