@@ -1,19 +1,34 @@
+import CONSTANTS from "../../general/helpers/constants";
 import { Category } from "../models/category.model";
 
-export const AnimalCategory = new Category(1, "Animal", "Animals");
-export const PlantCategory = new Category(2, "Plant", "Plants");
-export const ItemCategory = new Category(3, "Item", "Items");
-export const GroupCategory = new Category(4, "Group", "Groups");
-export const PlaceCategory = new Category(5, "Place", "Places");
-export const EventCategory = new Category(6, "Event", "Events");
-export const KnowledgeCategory = new Category(7, "Knowledge", "Knowledge");
+export const PeopleCategory = new Category(1, "People", CONSTANTS.ICON.people);
+export const CreaturesCategory = new Category(
+  2,
+  "Creatures",
+  CONSTANTS.ICON.creatures
+);
+export const PlantsCategory = new Category(3, "Plants", CONSTANTS.ICON.plants);
+export const ItemsCategory = new Category(4, "Items", CONSTANTS.ICON.items);
+export const OrganizationsCategory = new Category(
+  5,
+  "Organizations",
+  CONSTANTS.ICON.organizations
+);
+export const PlacesCategory = new Category(6, "Places", CONSTANTS.ICON.places);
+export const EventsCategory = new Category(7, "Evens", CONSTANTS.ICON.events);
+export const KnowledgeCategory = new Category(
+  8,
+  "Knowledge",
+  CONSTANTS.ICON.knowledge
+);
 
 export default [
-  AnimalCategory,
-  PlantCategory,
-  ItemCategory,
-  GroupCategory,
-  PlaceCategory,
-  EventCategory,
+  PeopleCategory,
+  CreaturesCategory,
+  PlantsCategory,
+  ItemsCategory,
+  OrganizationsCategory,
+  PlacesCategory,
+  EventsCategory,
   KnowledgeCategory,
 ];

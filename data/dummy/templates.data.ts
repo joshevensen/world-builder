@@ -2,17 +2,17 @@ import { FieldType } from "../enums/FieldType.enum";
 import { Field } from "../models/field.model";
 import { Template } from "../models/template.model";
 import {
-  GroupCategory,
-  ItemCategory,
-  PlaceCategory,
-  AnimalCategory,
+  OrganizationsCategory,
+  ItemsCategory,
+  PlacesCategory,
+  PeopleCategory,
 } from "./categories.data";
 import { AwesomeWorld } from "./worlds.data";
 
 export const CharacterTemplate = new Template(
   1,
   AwesomeWorld,
-  AnimalCategory,
+  PeopleCategory,
   "Character",
   null,
   [
@@ -27,7 +27,7 @@ export const CharacterTemplate = new Template(
 export const GuildTemplate = new Template(
   2,
   AwesomeWorld,
-  GroupCategory,
+  OrganizationsCategory,
   "Guild",
   null
 );
@@ -35,7 +35,7 @@ export const GuildTemplate = new Template(
 export const CityTemplate = new Template(
   3,
   AwesomeWorld,
-  PlaceCategory,
+  PlacesCategory,
   "City",
   null,
   [
@@ -47,7 +47,7 @@ export const CityTemplate = new Template(
 export const WeaponTemplate = new Template(
   4,
   AwesomeWorld,
-  ItemCategory,
+  ItemsCategory,
   "Weapon",
   null,
   [

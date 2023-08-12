@@ -134,10 +134,10 @@ export const FONT_SIZE = {
 };
 
 export const ICON_SIZE = {
-  xs: 8,
-  sm: 16,
-  md: 24,
-  lg: 32,
+  xs: 16,
+  sm: 24,
+  md: 32,
+  lg: 48,
   xl: 64,
 };
 
@@ -184,7 +184,9 @@ export const SPACING = {
  */
 export const COLORS = {
   primary: PALETTE.orange[600],
-  background: PALETTE.gray[200],
+
+  appBackground: PALETTE.gray[200],
+  cardBackground: PALETTE.white,
   text: PALETTE.gray[700],
 };
 
@@ -203,12 +205,13 @@ export const ICONS = {
   comments: "comment-multiple",
 
   // categories
-  animal: "account",
-  plant: "mushroom",
-  item: "car",
-  group: "shape-plus",
-  event: "calendar",
-  location: "map-marker",
+  people: "account",
+  creatures: "paw",
+  plants: "mushroom",
+  items: "car",
+  organizations: "church",
+  events: "calendar",
+  places: "map-marker",
   knowledge: "lightbulb-on-outline",
 
   // field types
@@ -260,3 +263,16 @@ export const ICONS = {
 };
 
 export const SIZE = {};
+
+const CONSTANTS = {
+  COLORS: COLORS,
+  FONT_SIZE: FONT_SIZE,
+  ICON_SIZE: ICON_SIZE,
+  ICON: ICONS,
+  PALETTE: PALETTE,
+  RADIUS: RADIUS,
+  SIZE: SIZE,
+  SPACING: SPACING,
+};
+
+export default CONSTANTS;

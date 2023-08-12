@@ -1,9 +1,11 @@
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable } from "react-native";
 import { FC } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { Category } from "../../../data/models/category.model";
 import { EntryViewNavigationType } from "../../../navigation/EntryNavigation";
+import CONSTANTS from "../../../general/helpers/constants";
+import LibCard from "../../../general/library/Card";
 
 type props = {
   id: number;
@@ -20,17 +22,17 @@ const EntryItem: FC<props> = ({ id, name, description, category }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <LibCard style={styles.container}>
       <Pressable onPress={goToEntryView}>
         <Text>{name}</Text>
       </Pressable>
-    </View>
+    </LibCard>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: CONSTANTS.SPACING[5],
   },
 });
 

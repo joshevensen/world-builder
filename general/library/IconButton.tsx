@@ -1,17 +1,16 @@
 import { FC } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { SPACING } from "../helpers/constants";
+import CONSTANTS from "../helpers/constants";
 import Icon from "./Icon";
 
 type props = {
   icon: any;
-  size: number;
-  color: string;
-  onPress(): void;
+  onPress?(): void;
+  size?: number;
+  color?: string;
 };
 
-const IconButton: FC<props> = ({ icon, size, color, onPress }) => {
+const LibIconButton: FC<props> = ({ icon, onPress, size, color }) => {
   return (
     <Pressable
       onPress={onPress}
@@ -26,11 +25,11 @@ const IconButton: FC<props> = ({ icon, size, color, onPress }) => {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    padding: SPACING[1],
+    padding: CONSTANTS.SPACING[1],
   },
   pressed: {
-    opacity: 0.5,
+    opacity: 0.75,
   },
 });
 
-export default IconButton;
+export default LibIconButton;

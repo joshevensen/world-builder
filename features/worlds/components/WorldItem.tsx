@@ -1,7 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import { FC } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { WorldViewNavigationType } from "../../../navigation/MainNavigation";
+import CONSTANTS from "../../../general/helpers/constants";
+import LibCard from "../../../general/library/Card";
 
 type props = {
   id: number;
@@ -17,17 +19,17 @@ const WorldItem: FC<props> = ({ id, name, description }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <LibCard style={styles.container}>
       <Pressable onPress={goToWorldView}>
         <Text>{name}</Text>
       </Pressable>
-    </View>
+    </LibCard>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: CONSTANTS.SPACING[5],
   },
 });
 

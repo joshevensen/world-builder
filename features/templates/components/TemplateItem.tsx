@@ -1,8 +1,10 @@
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet, Pressable } from "react-native";
 import { FC } from "react";
 import { Category } from "../../../data/models/category.model";
 import { useNavigation } from "@react-navigation/native";
 import { TemplateViewNavigationType } from "../../../navigation/TemplateNavigation";
+import CONSTANTS from "../../../general/helpers/constants";
+import LibCard from "../../../general/library/Card";
 
 type props = {
   id: number;
@@ -15,7 +17,7 @@ const TemplateItem: FC<props> = ({ id, name, description, category }) => {
   const navigation = useNavigation<TemplateViewNavigationType>();
 
   return (
-    <View style={styles.container}>
+    <LibCard style={styles.container}>
       <Pressable
         onPress={() => {
           navigation.navigate("TemplateView", { templateId: id });
@@ -23,13 +25,13 @@ const TemplateItem: FC<props> = ({ id, name, description, category }) => {
       >
         <Text>{name}</Text>
       </Pressable>
-    </View>
+    </LibCard>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    marginTop: CONSTANTS.SPACING[5],
   },
 });
 

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useLayoutEffect } from "react";
 import { Text, View } from "react-native";
 import { TemplateViewScreenType } from "../../../navigation/TemplateNavigation";
 import templatesData from "../../../data/dummy/templates.data";
@@ -11,7 +11,9 @@ const TemplateViewScreen: FC<TemplateViewScreenType> = ({
     (template) => template.id === route.params.templateId
   );
 
-  navigation.setOptions({ headerTitle: template?.name });
+  useLayoutEffect(() => {
+    navigation.setOptions({ headerTitle: template?.name });
+  }, [navigation]);
 
   return (
     <View>
