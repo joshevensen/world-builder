@@ -4,15 +4,15 @@ import { Template } from "../models/template.model";
 import {
   GroupCategory,
   ItemCategory,
-  LocationCategory,
-  PersonCategory,
+  PlaceCategory,
+  AnimalCategory,
 } from "./categories.data";
 import { AwesomeWorld } from "./worlds.data";
 
 export const CharacterTemplate = new Template(
   1,
   AwesomeWorld,
-  PersonCategory,
+  AnimalCategory,
   "Character",
   null,
   [
@@ -35,7 +35,7 @@ export const GuildTemplate = new Template(
 export const CityTemplate = new Template(
   3,
   AwesomeWorld,
-  LocationCategory,
+  PlaceCategory,
   "City",
   null,
   [

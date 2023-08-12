@@ -54,7 +54,11 @@ const MainNavigation: FC = () => {
           };
         }}
       />
-      <Stack.Screen name="WorldCreate" component={WorldCreateScreen} />
+      <Stack.Screen
+        name="WorldCreate"
+        component={WorldCreateScreen}
+        options={{ presentation: "modal" }}
+      />
     </Stack.Navigator>
   );
 };

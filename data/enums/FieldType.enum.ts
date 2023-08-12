@@ -1,6 +1,20 @@
 export enum FieldType {
   Text,
-  TextArea,
   Select,
   Number,
+  Currency,
+  Date,
+  Time,
+  Image,
+  TextArea,
+  Url,
+}
+
+export enum FieldStatsType {
+  Text,
+  Select,
+  Number,
+  Currency,
+  Date,
+  Time,
 }

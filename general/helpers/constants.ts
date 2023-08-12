@@ -134,10 +134,11 @@ export const FONT_SIZE = {
 };
 
 export const ICON_SIZE = {
-  sm: 12,
-  md: 16,
-  lg: 24,
-  xl: 32,
+  xs: 8,
+  sm: 16,
+  md: 24,
+  lg: 32,
+  xl: 64,
 };
 
 export const SPACING = {
@@ -185,6 +186,77 @@ export const COLORS = {
   primary: PALETTE.orange[600],
   background: PALETTE.gray[200],
   text: PALETTE.gray[700],
+};
+
+// https://pictogrammers.com/library/mdi/
+export const ICONS = {
+  logo: "dots-hexagon",
+
+  // features
+  worlds: "earth",
+  calendar: "calendar-clock",
+  lists: "format-list-text",
+  entries: "format-float-left",
+  templates: "text-box-multiple-outline",
+  categories: "file-tree",
+  relationships: "family-tree",
+  comments: "comment-multiple",
+
+  // categories
+  animal: "account",
+  plant: "mushroom",
+  item: "car",
+  group: "shape-plus",
+  event: "calendar",
+  location: "map-marker",
+  knowledge: "lightbulb-on-outline",
+
+  // field types
+  text: "form-textbox",
+  textarea: "form-textarea",
+  select: "form-select",
+  number: "numeric",
+  image: "camera",
+  currency: "cash",
+  date: "calendar-edit",
+  time: "clock-edit-outline",
+  url: "link-variant",
+
+  // ui
+  add: "plus",
+  archive: "archive",
+  check: "check",
+  close: "close",
+  delete: "delete",
+  download: "download",
+  down: "chevron-down",
+  edit: "pencil",
+  error: "close-circle",
+  favorite: "heart",
+  filter: "filter",
+  hide: "eye-off",
+  info: "information",
+  left: "chevron-left",
+  logout: "power",
+  menu: "dots-vertical",
+  move: "arrow-all",
+  notification: "bell",
+  notificationNone: "bell-outline",
+  print: "printer",
+  redo: "redo",
+  reload: "reload",
+  remove: "minus",
+  right: "chevron-right",
+  save: "content-save",
+  search: "magnify",
+  settings: "cog",
+  sort: "sort",
+  undo: "undo",
+  unFavorite: "heart-outline",
+  user: "account-circle",
+  up: "chevron-up",
+  view: "eye",
+  warning: "alert",
 };
 
 export const SIZE = {};

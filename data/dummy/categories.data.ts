@@ -1,17 +1,19 @@
 import { Category } from "../models/category.model";
 
-export const GeneralCategory = new Category(1, "General");
-export const PersonCategory = new Category(2, "Person");
-export const GroupCategory = new Category(3, "Group");
-export const LocationCategory = new Category(4, "Location");
-export const EventCategory = new Category(5, "Event");
-export const ItemCategory = new Category(6, "Item");
+export const AnimalCategory = new Category(1, "Animal", "Animals");
+export const PlantCategory = new Category(2, "Plant", "Plants");
+export const ItemCategory = new Category(3, "Item", "Items");
+export const GroupCategory = new Category(4, "Group", "Groups");
+export const PlaceCategory = new Category(5, "Place", "Places");
+export const EventCategory = new Category(6, "Event", "Events");
+export const KnowledgeCategory = new Category(7, "Knowledge", "Knowledge");
 
 export default [
-  GeneralCategory,
-  PersonCategory,
-  GroupCategory,
-  LocationCategory,
-  EventCategory,
+  AnimalCategory,
+  PlantCategory,
   ItemCategory,
+  GroupCategory,
+  PlaceCategory,
+  EventCategory,
+  KnowledgeCategory,
 ];
