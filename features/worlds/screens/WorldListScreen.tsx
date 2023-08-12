@@ -1,30 +1,28 @@
 import { FC } from "react";
 import { FlatList } from "react-native";
-
-import entriesData from "../../../data/dummy/entries.data";
-import EntryItem from "../components/EntryItem";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
-import { EntryListScreenType } from "../../../navigation/EntryNavigation";
+import WorldItem from "../components/WorldItem";
+import worldsData from "../../../data/dummy/worlds.data";
+import { WorldListScreenType } from "../../../navigation/MainNavigation";
 
-const EntryListScreen: FC<EntryListScreenType> = () => {
+const WorldListScreen: FC<WorldListScreenType> = ({ navigation }) => {
   return (
     <ScreenWrapper>
       <FlatList
-        data={entriesData}
+        data={worldsData}
         keyExtractor={(item: any) => item.id}
         renderItem={({ item }) => {
           const itemProps = {
             id: item.id,
             name: item.name,
             description: item.description,
-            category: item.category,
           };
 
-          return <EntryItem {...itemProps} />;
+          return <WorldItem {...itemProps} />;
         }}
       />
     </ScreenWrapper>
   );
 };
 
-export default EntryListScreen;
+export default WorldListScreen;

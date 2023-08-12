@@ -1,12 +1,17 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { FC } from "react";
 
-import EntryNavigation from "../features/entries/EntryNavigation";
-import TemplateNavigation from "../features/templates/TemplateNavigation";
+import EntryNavigation from "./EntryNavigation";
+import TemplateNavigation from "./TemplateNavigation";
 
-const Drawer = createDrawerNavigator();
+type ParamList = {
+  Entries: undefined;
+  Templates: undefined;
+};
 
-const MainNavigation: FC = () => {
+const Drawer = createDrawerNavigator<ParamList>();
+
+const WorldNavigation: FC = () => {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Entries" component={EntryNavigation} />
@@ -15,4 +20,4 @@ const MainNavigation: FC = () => {
   );
 };
 
-export default MainNavigation;
+export default WorldNavigation;

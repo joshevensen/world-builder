@@ -17,7 +17,7 @@ export interface IField {
   updated_at: Date;
 }
 
-export class Field {
+export class Field implements IField {
   constructor(
     public id: number,
     public type: FieldType,

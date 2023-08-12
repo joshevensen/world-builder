@@ -1,10 +1,12 @@
 import { FC } from "react";
 import { FlatList } from "react-native";
+
 import templatesData from "../../../data/dummy/templates.data";
 import TemplateItem from "../components/TemplateItem";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
+import { TemplateListScreenType } from "../../../navigation/TemplateNavigation";
 
-const TemplateListScreen: FC = () => {
+const TemplateListScreen: FC<TemplateListScreenType> = () => {
   return (
     <ScreenWrapper>
       <FlatList

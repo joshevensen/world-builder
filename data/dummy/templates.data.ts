@@ -7,9 +7,11 @@ import {
   LocationCategory,
   PersonCategory,
 } from "./categories.data";
+import { AwesomeWorld } from "./worlds.data";
 
 export const CharacterTemplate = new Template(
   1,
+  AwesomeWorld,
   PersonCategory,
   "Character",
   null,
@@ -22,18 +24,38 @@ export const CharacterTemplate = new Template(
   ]
 );
 
-export const GuildTemplate = new Template(2, GroupCategory, "Guild", null);
+export const GuildTemplate = new Template(
+  2,
+  AwesomeWorld,
+  GroupCategory,
+  "Guild",
+  null
+);
 
-export const CityTemplate = new Template(3, LocationCategory, "City", null, [
-  new Field(3, FieldType.Number, 1, "Population"),
-  new Field(4, FieldType.Text, 1, "Mayor"),
-]);
+export const CityTemplate = new Template(
+  3,
+  AwesomeWorld,
+  LocationCategory,
+  "City",
+  null,
+  [
+    new Field(3, FieldType.Number, 1, "Population"),
+    new Field(4, FieldType.Text, 1, "Mayor"),
+  ]
+);
 
-export const WeaponTemplate = new Template(4, ItemCategory, "Weapon", null, [
-  new Field(5, FieldType.Select, 1, "Type", [
-    { label: "Melee", value: "melee" },
-    { label: "Ranged", value: "ranged" },
-  ]),
-]);
+export const WeaponTemplate = new Template(
+  4,
+  AwesomeWorld,
+  ItemCategory,
+  "Weapon",
+  null,
+  [
+    new Field(5, FieldType.Select, 1, "Type", [
+      { label: "Melee", value: "melee" },
+      { label: "Ranged", value: "ranged" },
+    ]),
+  ]
+);
 
 export default [CharacterTemplate, GuildTemplate, CityTemplate, WeaponTemplate];
