@@ -9,7 +9,6 @@ import WorldListScreen from "../features/worlds/screens/WorldListScreen";
 import WorldCreateScreen from "../features/worlds/screens/WorldCreateScreen";
 import WorldNavigation from "./WorldNavigation";
 import worldsData from "../data/dummy/worlds.data";
-import { ScreenStackHeaderBackButtonImage } from "react-native-screens";
 
 type ParamList = {
   WorldList: undefined;
