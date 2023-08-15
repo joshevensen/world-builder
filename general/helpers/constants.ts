@@ -185,9 +185,10 @@ export const SPACING = {
 export const COLORS = {
   primary: PALETTE.orange[600],
 
-  appBackground: PALETTE.gray[200],
-  cardBackground: PALETTE.white,
-  text: PALETTE.gray[700],
+  headerBackground: PALETTE.gray[900],
+  appBackground: PALETTE.gray[800],
+  cardBackground: PALETTE.gray[500],
+  text: PALETTE.gray[100],
 };
 
 // https://pictogrammers.com/library/mdi/

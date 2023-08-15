@@ -1,30 +1,25 @@
-import { Text, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { FC } from "react";
-import { Category } from "../../../data/models/category.model";
 import { useNavigation } from "@react-navigation/native";
-import { TemplateViewNavigationType } from "../../../navigation/TemplateNavigation";
+
+import { Category } from "../../../data/models/category.model";
+import { TemplateNavigationProp } from "../../../navigation/MainNavigation";
 import CONSTANTS from "../../../general/helpers/constants";
 import LibCard from "../../../general/library/Card";
 
 type props = {
-  id: number;
   name: string;
   description: string | null;
   category: Category;
+  onPress?(): void;
 };
 
-const TemplateItem: FC<props> = ({ id, name, description, category }) => {
-  const navigation = useNavigation<TemplateViewNavigationType>();
+const TemplateItem: FC<props> = ({ name, description, category, onPress }) => {
+  const navigation = useNavigation<TemplateNavigationProp>();
 
   return (
-    <LibCard style={styles.container}>
-      <Pressable
-        onPress={() => {
-          navigation.navigate("TemplateView", { templateId: id });
-        }}
-      >
-        <Text>{name}</Text>
-      </Pressable>
+    <LibCard style={styles.container} onPress={onPress}>
+      <Text>{name}</Text>
     </LibCard>
   );
 };

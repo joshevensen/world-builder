@@ -1,31 +1,21 @@
-import { Text, StyleSheet, Pressable } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import { FC } from "react";
-import { useNavigation } from "@react-navigation/native";
 
 import { Category } from "../../../data/models/category.model";
-import { EntryViewNavigationType } from "../../../navigation/EntryNavigation";
 import CONSTANTS from "../../../general/helpers/constants";
 import LibCard from "../../../general/library/Card";
 
 type props = {
-  id: number;
   name: string;
   description: string | null;
   category: Category;
+  onPress?(): void;
 };
 
-const EntryItem: FC<props> = ({ id, name, description, category }) => {
-  const navigation = useNavigation<EntryViewNavigationType>();
-
-  function goToEntryView() {
-    return navigation.navigate("EntryView", { entryId: id });
-  }
-
+const EntryItem: FC<props> = ({ name, description, category, onPress }) => {
   return (
-    <LibCard style={styles.container}>
-      <Pressable onPress={goToEntryView}>
-        <Text>{name}</Text>
-      </Pressable>
+    <LibCard style={styles.container} onPress={onPress}>
+      <Text>{name}</Text>
     </LibCard>
   );
 };

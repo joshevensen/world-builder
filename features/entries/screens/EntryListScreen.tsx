@@ -2,25 +2,35 @@ import { FC } from "react";
 import { FlatList } from "react-native";
 
 import entriesData from "../../../data/dummy/entries.data";
-import EntryItem from "../components/EntryItem";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
-import { EntryListScreenType } from "../../../navigation/EntryNavigation";
+import { EntryListProp } from "../../../navigation/MainNavigation";
+import EntryItem from "../components/EntryItem";
 
-const EntryListScreen: FC<EntryListScreenType> = () => {
+const EntryListScreen: FC<EntryListProp> = ({ route, navigation }) => {
+  const categoryId = route.params.categoryId;
+
+  const entries = entriesData.filter(
+    (entry) => entry.category.id === categoryId
+  );
+
+  function goToEntry(entryId: number) {
+    navigation.navigate("EntryView", { entryId: entryId });
+  }
+
   return (
     <ScreenWrapper>
       <FlatList
-        data={entriesData}
+        data={entries}
         keyExtractor={(item: any) => item.id}
         renderItem={({ item }) => {
-          const itemProps = {
-            id: item.id,
-            name: item.name,
-            description: item.description,
-            category: item.category,
-          };
-
-          return <EntryItem {...itemProps} />;
+          return (
+            <EntryItem
+              name={item.name}
+              description={item.description}
+              category={item.category}
+              onPress={goToEntry.bind("entryId", item.id)}
+            />
+          );
         }}
       />
     </ScreenWrapper>

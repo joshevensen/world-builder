@@ -15,7 +15,7 @@ export const OrganizationsCategory = new Category(
   CONSTANTS.ICON.organizations
 );
 export const PlacesCategory = new Category(6, "Places", CONSTANTS.ICON.places);
-export const EventsCategory = new Category(7, "Evens", CONSTANTS.ICON.events);
+export const EventsCategory = new Category(7, "Events", CONSTANTS.ICON.events);
 export const KnowledgeCategory = new Category(
   8,
   "Knowledge",

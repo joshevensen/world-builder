@@ -3,27 +3,27 @@ import { FlatList } from "react-native";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import WorldItem from "../components/WorldItem";
 import worldsData from "../../../data/dummy/worlds.data";
-import { WorldListScreenType } from "../../../navigation/MainNavigation";
-import LibButton from "../../../general/library/Button";
-import LibIconButton from "../../../general/library/IconButton";
-import CONSTANTS from "../../../general/helpers/constants";
+import { WorldListProp } from "../../../navigation/WorldNavigation";
 
-const WorldListScreen: FC<WorldListScreenType> = ({ navigation }) => {
+const WorldListScreen: FC<WorldListProp> = ({ navigation }) => {
+  function goToWorld(worldId: number) {
+    navigation.navigate("World", { worldId: worldId });
+  }
+
   return (
     <ScreenWrapper>
-      <LibButton>Create World</LibButton>
-
       <FlatList
         data={worldsData}
         keyExtractor={(item: any) => item.id}
         renderItem={({ item }) => {
-          const itemProps = {
-            id: item.id,
-            name: item.name,
-            description: item.description,
-          };
-
-          return <WorldItem {...itemProps} />;
+          return (
+            <WorldItem
+              id={item.id}
+              name={item.name}
+              description={item.description}
+              onPress={goToWorld.bind("worldId", item.id)}
+            />
+          );
         }}
       />
     </ScreenWrapper>

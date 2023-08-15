@@ -11,7 +11,7 @@ type props = {
 const LibCard: FC<props> = ({ children, onPress, style }) => {
   return (
     <View style={style}>
-      <Pressable onPress={onPress}>
+      <Pressable style={styles.container} onPress={onPress}>
         <View style={styles.card}>{children}</View>
       </Pressable>
     </View>
@@ -19,7 +19,11 @@ const LibCard: FC<props> = ({ children, onPress, style }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+  },
   card: {
+    // flex: 1,
     padding: CONSTANTS.SPACING[4],
     backgroundColor: CONSTANTS.COLORS.cardBackground,
   },
