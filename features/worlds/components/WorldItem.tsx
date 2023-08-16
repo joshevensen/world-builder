@@ -13,10 +13,8 @@ type props = {
 
 const WorldItem: FC<props> = ({ id, name, description, onPress }) => {
   return (
-    <LibCard style={styles.container}>
-      <Pressable onPress={onPress}>
-        <Text>{name}</Text>
-      </Pressable>
+    <LibCard style={styles.container} onPress={onPress}>
+      <Text>{name}</Text>
     </LibCard>
   );
 };

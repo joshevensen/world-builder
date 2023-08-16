@@ -1,12 +1,12 @@
 import { FC, useLayoutEffect } from "react";
 import { Text, View } from "react-native";
+
 import { TemplateViewProp } from "../../../navigation/MainNavigation";
-import templatesData from "../../../data/dummy/templates.data";
+import { selectActiveTemplate } from "../../../store/redux/templates.reducer";
+import { useAppSelector } from "../../../general/helpers/hooks";
 
 const TemplateViewScreen: FC<TemplateViewProp> = ({ route, navigation }) => {
-  const template = templatesData.find(
-    (template) => template.id === route.params.templateId
-  );
+  const template = useAppSelector(selectActiveTemplate);
 
   useLayoutEffect(() => {
     navigation.setOptions({ headerTitle: template?.name });

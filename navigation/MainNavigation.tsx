@@ -4,15 +4,20 @@ import {
   NativeStackScreenProps as ScreenProps,
 } from "@react-navigation/native-stack";
 
-import { CategoriesContext } from "../store/categories.context";
-import TemplateListScreen from "../features/templates/screens/TemplateListScreen";
+import CONSTANTS from "../general/helpers/constants";
+import { ICategory } from "../data/interfaces/category.interface";
+import { CategoriesContext } from "../store/context/categories.context";
+import LibIconButton from "../general/library/IconButton";
+
+import WorldViewScreen from "../features/worlds/screens/WorldViewScreen";
+import WorldUpdateScreen from "../features/worlds/screens/WorldUpdateScreen";
 import EntryListScreen from "../features/entries/screens/EntryListScreen";
 import EntryViewScreen from "../features/entries/screens/EntryViewScreen";
+import TemplateListScreen from "../features/templates/screens/TemplateListScreen";
 import TemplateViewScreen from "../features/templates/screens/TemplateViewScreen";
-import CONSTANTS from "../general/helpers/constants";
-import WorldViewScreen from "../features/worlds/screens/WorldViewScreen";
-import worldsData from "../data/dummy/worlds.data";
-import WorldUpdateScreen from "../features/worlds/screens/WorldUpdateScreen";
+import TemplateCreateScreen from "../features/templates/screens/TemplateCreateScreen";
+import TemplateUpdateScreen from "../features/templates/screens/TemplateUpdateScreen";
+import ListListScreen from "../features/lists/screens/ListListScreen";
 
 type ParamList = {
   WorldView: { worldId: number };
@@ -20,7 +25,10 @@ type ParamList = {
   EntryList: { categoryId: number };
   EntryView: { entryId: number };
   TemplateList: undefined;
+  TemplateCreate: undefined;
   TemplateView: { templateId: number };
+  TemplateUpdate: { templateId: number };
+  ListList: undefined;
 };
 
 const Stack = createNativeStackNavigator<ParamList>();
@@ -30,7 +38,10 @@ export type WorldUpdateProp = ScreenProps<ParamList, "WorldUpdate">;
 export type EntryListProp = ScreenProps<ParamList, "EntryList">;
 export type EntryViewProp = ScreenProps<ParamList, "EntryView">;
 export type TemplateListProp = ScreenProps<ParamList, "TemplateList">;
+export type TemplateCreateProp = ScreenProps<ParamList, "TemplateCreate">;
 export type TemplateViewProp = ScreenProps<ParamList, "TemplateView">;
+export type TemplateUpdateProp = ScreenProps<ParamList, "TemplateUpdate">;
+export type ListListProp = ScreenProps<ParamList, "ListList">;
 
 const MainNavigation: FC = () => {
   const categories = useContext(CategoriesContext);
@@ -49,44 +60,86 @@ const MainNavigation: FC = () => {
         },
       }}
     >
-      <Stack.Screen
-        name="WorldView"
-        component={WorldViewScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="WorldUpdate"
-        component={WorldUpdateScreen}
-        options={({ route }) => {
-          const world = worldsData.find(
-            (world) => world.id === route.params?.worldId
-          );
+      {/**
+       * Worlds
+       */}
+      <Stack.Group>
+        <Stack.Screen
+          name="WorldView"
+          component={WorldViewScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="WorldUpdate"
+          component={WorldUpdateScreen}
+          options={{ headerTitle: "Settings" }}
+        />
+      </Stack.Group>
 
-          return {
-            headerTitle: world?.name,
-          };
-        }}
-      />
-      <Stack.Screen
-        name="EntryList"
-        component={EntryListScreen}
-        options={({ route }) => {
-          const category = categories.find(
-            (category) => category.id === route.params?.categoryId
-          );
+      {/**
+       * Entries
+       */}
+      <Stack.Group>
+        <Stack.Screen
+          name="EntryList"
+          component={EntryListScreen}
+          options={({ route }) => {
+            const category = categories.find(
+              (category: ICategory) => category.id === route.params?.categoryId
+            );
 
-          return {
-            headerTitle: category?.name,
-          };
-        }}
-      />
-      <Stack.Screen name="EntryView" component={EntryViewScreen} />
-      <Stack.Screen
-        name="TemplateList"
-        component={TemplateListScreen}
-        options={{ headerTitle: "Templates" }}
-      />
-      <Stack.Screen name="TemplateView" component={TemplateViewScreen} />
+            return {
+              headerTitle: category?.name,
+            };
+          }}
+        />
+        <Stack.Screen name="EntryView" component={EntryViewScreen} />
+      </Stack.Group>
+
+      {/**
+       * Templates
+       */}
+      <Stack.Group>
+        <Stack.Screen
+          name="TemplateList"
+          component={TemplateListScreen}
+          options={({ navigation }) => ({
+            headerTitle: "Templates",
+            headerRight: ({ tintColor }) => (
+              <LibIconButton
+                onPress={() => {
+                  navigation.navigate("TemplateCreate");
+                }}
+                icon={CONSTANTS.ICON.add}
+                color={tintColor}
+                size={CONSTANTS.ICON_SIZE.sm}
+              />
+            ),
+          })}
+        />
+        <Stack.Screen
+          name="TemplateCreate"
+          component={TemplateCreateScreen}
+          options={{ presentation: "modal", headerTitle: "Create Template" }}
+        />
+        <Stack.Screen name="TemplateView" component={TemplateViewScreen} />
+        <Stack.Screen
+          name="TemplateUpdate"
+          component={TemplateUpdateScreen}
+          options={{ headerTitle: "Update Template" }}
+        />
+      </Stack.Group>
+
+      {/**
+       * Lists
+       */}
+      <Stack.Group>
+        <Stack.Screen
+          name="ListList"
+          component={ListListScreen}
+          options={{ headerTitle: "Lists" }}
+        />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };

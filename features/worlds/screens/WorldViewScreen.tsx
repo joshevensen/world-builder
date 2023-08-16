@@ -3,20 +3,33 @@ import { FlatList, Text } from "react-native";
 
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import { WorldViewProp } from "../../../navigation/MainNavigation";
-import { CategoriesContext } from "../../../store/categories.context";
+import { CategoriesContext } from "../../../store/context/categories.context";
 import CategoryItem from "../components/CategoryItem";
 import LibCard from "../../../general/library/Card";
 import { View } from "react-native";
+import { selectActiveWorld } from "../../../store/redux/worlds.reducer";
+import { useAppSelector } from "../../../general/helpers/hooks";
 
 const WorldViewScreen: FC<WorldViewProp> = ({ navigation }) => {
   const categories = useContext(CategoriesContext);
+  const world = useAppSelector(selectActiveWorld);
 
   function goToEntryList(categoryId: number) {
     navigation.navigate("EntryList", { categoryId: categoryId });
   }
 
-  function goToTemplates() {
+  function goToTemplateList() {
     navigation.navigate("TemplateList");
+  }
+
+  function goToListlist() {
+    navigation.navigate("ListList");
+  }
+
+  function goToWorldUpdate() {
+    if (world) {
+      navigation.navigate("WorldUpdate", { worldId: world.id });
+    }
   }
 
   return (
@@ -41,15 +54,15 @@ const WorldViewScreen: FC<WorldViewProp> = ({ navigation }) => {
           numColumns={2}
         />
 
-        <LibCard>
+        <LibCard onPress={goToListlist}>
           <Text>Lists</Text>
         </LibCard>
 
-        <LibCard onPress={goToTemplates}>
+        <LibCard onPress={goToTemplateList}>
           <Text>Templates</Text>
         </LibCard>
 
-        <LibCard>
+        <LibCard onPress={goToWorldUpdate}>
           <Text>Settings</Text>
         </LibCard>
       </View>

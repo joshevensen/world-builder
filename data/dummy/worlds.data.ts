@@ -1,6 +1,19 @@
-import { World } from "../models/world.model";
+import { IWorld } from "../interfaces/world.interface";
 
-export const AwesomeWorld = new World(1, "Awesome World", null);
-export const MostAwesomeWorld = new World(2, "Most Awesome World", null);
+export const MostAwesomeWorld: IWorld = {
+  id: 1,
+  name: "Most Awesome World",
+  description: null,
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
 
-export default [AwesomeWorld, MostAwesomeWorld];
+export const AwesomeWorld: IWorld = {
+  id: 2,
+  name: "Awesome World",
+  description: null,
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
+
+export default [MostAwesomeWorld, AwesomeWorld];

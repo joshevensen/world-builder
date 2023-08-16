@@ -10,7 +10,7 @@ const EntryListScreen: FC<EntryListProp> = ({ route, navigation }) => {
   const categoryId = route.params.categoryId;
 
   const entries = entriesData.filter(
-    (entry) => entry.category.id === categoryId
+    (entry) => entry.category_id === categoryId
   );
 
   function goToEntry(entryId: number) {
@@ -27,7 +27,7 @@ const EntryListScreen: FC<EntryListProp> = ({ route, navigation }) => {
             <EntryItem
               name={item.name}
               description={item.description}
-              category={item.category}
+              categoryId={item.category_id}
               onPress={goToEntry.bind("entryId", item.id)}
             />
           );

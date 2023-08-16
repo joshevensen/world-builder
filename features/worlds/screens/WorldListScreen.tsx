@@ -1,19 +1,25 @@
 import { FC } from "react";
 import { FlatList } from "react-native";
+
+import { useAppDispatch, useAppSelector } from "../../../general/helpers/hooks";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import WorldItem from "../components/WorldItem";
-import worldsData from "../../../data/dummy/worlds.data";
 import { WorldListProp } from "../../../navigation/WorldNavigation";
+import { setActiveWorldId } from "../../../store/redux/worlds.reducer";
 
 const WorldListScreen: FC<WorldListProp> = ({ navigation }) => {
+  const dispatch = useAppDispatch();
+  const worlds = useAppSelector((state) => state.worlds.all);
+
   function goToWorld(worldId: number) {
+    dispatch(setActiveWorldId(worldId));
     navigation.navigate("World", { worldId: worldId });
   }
 
   return (
     <ScreenWrapper>
       <FlatList
-        data={worldsData}
+        data={worlds}
         keyExtractor={(item: any) => item.id}
         renderItem={({ item }) => {
           return (
