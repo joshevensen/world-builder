@@ -13,6 +13,7 @@ const LibInput: FC<props> = ({ placeholder, type = "default" }) => {
       <TextInput
         style={styles.input}
         placeholder={placeholder}
+        placeholderTextColor={CONSTANTS.COLORS.color.muted}
         keyboardType={type}
       />
     </View>

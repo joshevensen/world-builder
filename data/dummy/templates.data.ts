@@ -6,11 +6,11 @@ import {
   PlacesCategory,
   PeopleCategory,
 } from "./categories.data";
-import { AwesomeWorld } from "./worlds.data";
+import { AwesomeWorld, MostAwesomeWorld } from "./worlds.data";
 
 export const CharacterTemplate: ITemplate = {
   id: 1,
-  world_id: AwesomeWorld.id,
+  world_id: MostAwesomeWorld.id,
   category_id: PeopleCategory.id,
   name: "Character",
   description: null,
@@ -72,6 +72,28 @@ export const WeaponTemplate: ITemplate = {
   world_id: AwesomeWorld.id,
   category_id: ItemsCategory.id,
   name: "Weapon",
+  description:
+    "a thing designed or used for inflicting bodily harm or physical damage",
+  fields: [
+    {
+      order: 1,
+      type: FieldType.Select,
+      label: "Type",
+      options: [
+        { label: "Melee", value: "melee" },
+        { label: "Ranged", value: "ranged" },
+      ],
+    },
+  ],
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
+
+export const CountryTemplate: ITemplate = {
+  id: 5,
+  world_id: AwesomeWorld.id,
+  category_id: PlacesCategory.id,
+  name: "Country",
   description: null,
   fields: [
     {
@@ -88,4 +110,22 @@ export const WeaponTemplate: ITemplate = {
   updated_at: new Date().toString(),
 };
 
-export default [CharacterTemplate, GuildTemplate, CityTemplate, WeaponTemplate];
+export const GodsTemplate: ITemplate = {
+  id: 6,
+  world_id: AwesomeWorld.id,
+  category_id: PeopleCategory.id,
+  name: "Gods",
+  description: null,
+  fields: [],
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
+
+export default [
+  CharacterTemplate,
+  GuildTemplate,
+  CityTemplate,
+  WeaponTemplate,
+  CountryTemplate,
+  GodsTemplate,
+];

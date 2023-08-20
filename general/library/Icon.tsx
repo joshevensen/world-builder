@@ -13,7 +13,7 @@ const LibIcon: FC<props> = ({
   name,
   style,
   size = CONSTANTS.SIZE.icon.md,
-  color = CONSTANTS.COLORS.primary,
+  color = CONSTANTS.COLORS.color.text,
 }) => {
   return (
     <MaterialCommunityIcons

@@ -266,7 +266,7 @@ export const COLORS = {
   color: {
     text: PALETTE.gray[100],
     inputs: PALETTE.gray[800],
-    placeholder: PALETTE.gray[400],
+    muted: PALETTE.gray[400],
   },
 };
 

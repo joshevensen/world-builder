@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 import CONSTANTS from "../../../general/helpers/constants";
 import LibCard from "../../../general/library/Card";
 import LibText from "../../../general/library/Text";
+import { CategoriesContext } from "../../../store/context/categories.context";
 
 type props = {
   name: string;
@@ -18,9 +19,16 @@ const TemplateItem: FC<props> = ({
   categoryId,
   onPress,
 }) => {
+  const categories = useContext(CategoriesContext);
+  const category = categories.find((category) => category.id === categoryId);
+
   return (
-    <LibCard style={styles.container} onPress={onPress}>
-      <LibText>{name}</LibText>
+    <LibCard style={styles.container} onPress={onPress} includeArrow={true}>
+      <LibText style={styles.category}>{category?.name}</LibText>
+      <LibText style={styles.name}>{name}</LibText>
+      {description && (
+        <LibText style={styles.description}>{description}</LibText>
+      )}
     </LibCard>
   );
 };
@@ -28,6 +36,16 @@ const TemplateItem: FC<props> = ({
 const styles = StyleSheet.create({
   container: {
     marginBottom: CONSTANTS.SPACING[5],
+  },
+  category: {
+    color: CONSTANTS.COLORS.color.muted,
+  },
+  name: {
+    fontSize: CONSTANTS.SIZE.font.lg,
+    fontWeight: "bold",
+  },
+  description: {
+    marginTop: CONSTANTS.SPACING[2],
   },
 });
 

@@ -59,33 +59,42 @@ const WorldViewScreen: FC<WorldViewProp> = ({ navigation }) => {
       </View>
 
       <View style={styles.otherContainer}>
-        <LibCard style={styles.otherCard} onPress={goToListlist}>
+        <LibCard
+          style={styles.otherCard}
+          onPress={goToListlist}
+          includeArrow={true}
+        >
           <View style={styles.cardContainer}>
             <LibIcon
               name={CONSTANTS.ICON.lists}
-              color={CONSTANTS.COLORS.color.text}
               size={CONSTANTS.SIZE.icon.sm}
             />
             <LibText style={styles.cardText}>Lists</LibText>
           </View>
         </LibCard>
 
-        <LibCard style={styles.otherCard} onPress={goToTemplateList}>
+        <LibCard
+          style={styles.otherCard}
+          onPress={goToTemplateList}
+          includeArrow={true}
+        >
           <View style={styles.cardContainer}>
             <LibIcon
               name={CONSTANTS.ICON.templates}
-              color={CONSTANTS.COLORS.color.text}
               size={CONSTANTS.SIZE.icon.sm}
             />
             <LibText style={styles.cardText}>Templates</LibText>
           </View>
         </LibCard>
 
-        <LibCard style={styles.otherCard} onPress={goToWorldUpdate}>
+        <LibCard
+          style={styles.otherCard}
+          onPress={goToWorldUpdate}
+          includeArrow={true}
+        >
           <View style={styles.cardContainer}>
             <LibIcon
               name={CONSTANTS.ICON.settings}
-              color={CONSTANTS.COLORS.color.text}
               size={CONSTANTS.SIZE.icon.sm}
             />
             <LibText style={styles.cardText}>Settings</LibText>

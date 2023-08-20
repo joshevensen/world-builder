@@ -17,11 +17,7 @@ const CategoryItem: FC<props> = ({ name, icon, count, onPress }) => {
   return (
     <LibCard style={styles.categoryItem} onPress={onPress}>
       <View style={styles.container}>
-        <LibIcon
-          name={icon}
-          color={CONSTANTS.COLORS.color.text}
-          size={CONSTANTS.SIZE.icon.sm}
-        />
+        <LibIcon name={icon} size={CONSTANTS.SIZE.icon.sm} />
         <LibText style={styles.count}>{count}</LibText>
       </View>
 

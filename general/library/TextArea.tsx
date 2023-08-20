@@ -13,7 +13,7 @@ const LibTextArea: FC<props> = ({ placeholder, style }) => {
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        placeholderTextColor={CONSTANTS.COLORS.color.placeholder}
+        placeholderTextColor={CONSTANTS.COLORS.color.muted}
         multiline={true}
       />
     </View>
