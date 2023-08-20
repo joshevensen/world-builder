@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { Text } from "react-native";
 
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
+import LibText from "../../../general/library/Text";
 
 const TemplateUpdateScreen: FC = () => {
   return (
     <ScreenWrapper>
-      <Text>Update Template</Text>
+      <LibText>Update Template</LibText>
     </ScreenWrapper>
   );
 };

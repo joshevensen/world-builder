@@ -1,11 +1,11 @@
 import { FC } from "react";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
-import { Text } from "react-native";
+import LibText from "../../../general/library/Text";
 
 const ListListScreen: FC = () => {
   return (
     <ScreenWrapper>
-      <Text>Lists</Text>
+      <LibText>Lists</LibText>
     </ScreenWrapper>
   );
 };

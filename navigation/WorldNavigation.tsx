@@ -32,11 +32,11 @@ const WorldNavigation: FC = () => {
         headerBackTitleVisible: false,
         headerShadowVisible: false,
         headerStyle: {
-          backgroundColor: CONSTANTS.COLORS.headerBackground,
+          backgroundColor: CONSTANTS.COLORS.backgroundColor.header,
         },
         headerTintColor: CONSTANTS.PALETTE.white,
         contentStyle: {
-          backgroundColor: CONSTANTS.COLORS.appBackground,
+          backgroundColor: CONSTANTS.COLORS.backgroundColor.app,
         },
       }}
     >
@@ -52,7 +52,7 @@ const WorldNavigation: FC = () => {
               }}
               icon={CONSTANTS.ICON.add}
               color={tintColor}
-              size={CONSTANTS.ICON_SIZE.sm}
+              size={CONSTANTS.SIZE.icon.sm}
             />
           ),
         })}
@@ -60,7 +60,20 @@ const WorldNavigation: FC = () => {
       <Stack.Screen
         name="WorldCreate"
         component={WorldCreateScreen}
-        options={{ presentation: "modal", headerTitle: "Create World" }}
+        options={({ navigation }) => ({
+          presentation: "modal",
+          headerTitle: "Create World",
+          headerRight: ({ tintColor }) => (
+            <LibIconButton
+              onPress={() => {
+                navigation.goBack();
+              }}
+              icon={CONSTANTS.ICON.close}
+              color={tintColor}
+              size={CONSTANTS.SIZE.icon.sm}
+            />
+          ),
+        })}
       />
 
       <Stack.Screen

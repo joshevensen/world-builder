@@ -6,14 +6,23 @@ type props = {
   name: any;
   size?: number;
   color?: string;
+  style?: any;
 };
 
 const LibIcon: FC<props> = ({
   name,
-  size = CONSTANTS.ICON_SIZE.md,
+  style,
+  size = CONSTANTS.SIZE.icon.md,
   color = CONSTANTS.COLORS.primary,
 }) => {
-  return <MaterialCommunityIcons name={name} size={size} color={color} />;
+  return (
+    <MaterialCommunityIcons
+      style={style}
+      name={name}
+      size={size}
+      color={color}
+    />
+  );
 };
 
 export default LibIcon;

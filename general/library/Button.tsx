@@ -57,13 +57,14 @@ const LibButton: FC<props> = ({
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: CONSTANTS.RADIUS.sm,
+    borderRadius: CONSTANTS.SIZE.radius.sm,
     borderWidth: 1,
     paddingHorizontal: CONSTANTS.SPACING[4],
     paddingVertical: CONSTANTS.SPACING[2],
   },
   text: {
     textAlign: "center",
+    fontWeight: "bold",
   },
   pressed: {
     opacity: 0.75,

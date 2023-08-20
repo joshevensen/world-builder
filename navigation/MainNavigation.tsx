@@ -52,11 +52,11 @@ const MainNavigation: FC = () => {
         headerBackTitleVisible: false,
         headerShadowVisible: false,
         headerStyle: {
-          backgroundColor: CONSTANTS.COLORS.headerBackground,
+          backgroundColor: CONSTANTS.COLORS.backgroundColor.header,
         },
         headerTintColor: CONSTANTS.PALETTE.white,
         contentStyle: {
-          backgroundColor: CONSTANTS.COLORS.appBackground,
+          backgroundColor: CONSTANTS.COLORS.backgroundColor.app,
         },
       }}
     >
@@ -112,7 +112,7 @@ const MainNavigation: FC = () => {
                 }}
                 icon={CONSTANTS.ICON.add}
                 color={tintColor}
-                size={CONSTANTS.ICON_SIZE.sm}
+                size={CONSTANTS.SIZE.icon.sm}
               />
             ),
           })}

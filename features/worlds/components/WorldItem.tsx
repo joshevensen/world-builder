@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 import CONSTANTS from "../../../general/helpers/constants";
 import LibCard from "../../../general/library/Card";
+import LibText from "../../../general/library/Text";
 
 type props = {
   id: number;
@@ -14,14 +15,14 @@ type props = {
 const WorldItem: FC<props> = ({ id, name, description, onPress }) => {
   return (
     <LibCard style={styles.container} onPress={onPress}>
-      <Text>{name}</Text>
+      <LibText>{name}</LibText>
     </LibCard>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: CONSTANTS.SPACING[5],
+    marginBottom: CONSTANTS.SPACING[5],
   },
 });
 

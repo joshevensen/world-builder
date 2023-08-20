@@ -1,8 +1,10 @@
 import { FC, useLayoutEffect } from "react";
-import { Text, View } from "react-native";
 
 import entriesData from "../../../data/dummy/entries.data";
 import { EntryViewProp } from "../../../navigation/MainNavigation";
+import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
+import LibCard from "../../../general/library/Card";
+import LibText from "../../../general/library/Text";
 
 const EntryViewScreen: FC<EntryViewProp> = ({ navigation, route }) => {
   const entry = entriesData.find((entry) => entry.id === route.params.entryId);
@@ -12,10 +14,12 @@ const EntryViewScreen: FC<EntryViewProp> = ({ navigation, route }) => {
   }, [navigation]);
 
   return (
-    <View>
-      <Text>{entry?.name}</Text>
-      <Text>{entry?.description}</Text>
-    </View>
+    <ScreenWrapper>
+      <LibCard>
+        <LibText>{entry?.name}</LibText>
+        <LibText>{entry?.description}</LibText>
+      </LibCard>
+    </ScreenWrapper>
   );
 };
 

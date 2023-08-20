@@ -1,8 +1,9 @@
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { FC } from "react";
 
 import CONSTANTS from "../../../general/helpers/constants";
 import LibCard from "../../../general/library/Card";
+import LibText from "../../../general/library/Text";
 
 type props = {
   name: string;
@@ -19,14 +20,14 @@ const TemplateItem: FC<props> = ({
 }) => {
   return (
     <LibCard style={styles.container} onPress={onPress}>
-      <Text>{name}</Text>
+      <LibText>{name}</LibText>
     </LibCard>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: CONSTANTS.SPACING[5],
+    marginBottom: CONSTANTS.SPACING[5],
   },
 });
 

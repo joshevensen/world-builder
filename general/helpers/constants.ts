@@ -110,37 +110,6 @@ export const PALETTE = {
   },
 };
 
-export const RADIUS = {
-  sm: 4,
-  md: 6,
-  lg: 8,
-  xl: 12,
-  "2xl": 16,
-  "3xl": 24,
-  full: 99999,
-};
-
-export const FONT_SIZE = {
-  xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 18,
-  xl: 20,
-  "2xl": 24,
-  "3xl": 30,
-  "4xl": 36,
-  "5xl": 48,
-  "6xl": 60,
-};
-
-export const ICON_SIZE = {
-  xs: 16,
-  sm: 24,
-  md: 32,
-  lg: 48,
-  xl: 64,
-};
-
 export const SPACING = {
   px: 1,
   0: 0,
@@ -177,18 +146,6 @@ export const SPACING = {
   72: 288,
   80: 320,
   96: 384,
-};
-
-/**
- * Named Constants
- */
-export const COLORS = {
-  primary: PALETTE.orange[600],
-
-  headerBackground: PALETTE.gray[900],
-  appBackground: PALETTE.gray[800],
-  cardBackground: PALETTE.gray[500],
-  text: PALETTE.gray[100],
 };
 
 // https://pictogrammers.com/library/mdi/
@@ -263,15 +220,60 @@ export const ICONS = {
   warning: "alert",
 };
 
-export const SIZE = {};
+export const SIZE = {
+  font: {
+    xs: 12,
+    sm: 14,
+    md: 16,
+    lg: 18,
+    xl: 20,
+    "2xl": 24,
+    "3xl": 30,
+    "4xl": 36,
+    "5xl": 48,
+    "6xl": 60,
+  },
+  icon: {
+    xs: 16,
+    sm: 24,
+    md: 32,
+    lg: 48,
+    xl: 64,
+  },
+  radius: {
+    sm: 4,
+    md: 6,
+    lg: 8,
+    xl: 12,
+    "2xl": 16,
+    "3xl": 24,
+    full: 99999,
+  },
+};
+
+/**
+ * Named Constants
+ */
+export const COLORS = {
+  primary: PALETTE.orange[600],
+
+  backgroundColor: {
+    app: PALETTE.gray[800],
+    card: PALETTE.gray[600],
+    header: PALETTE.gray[900],
+    inputs: PALETTE.gray[200],
+  },
+  color: {
+    text: PALETTE.gray[100],
+    inputs: PALETTE.gray[800],
+    placeholder: PALETTE.gray[400],
+  },
+};
 
 const CONSTANTS = {
   COLORS: COLORS,
-  FONT_SIZE: FONT_SIZE,
-  ICON_SIZE: ICON_SIZE,
   ICON: ICONS,
   PALETTE: PALETTE,
-  RADIUS: RADIUS,
   SIZE: SIZE,
   SPACING: SPACING,
 };

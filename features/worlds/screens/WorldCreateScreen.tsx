@@ -1,8 +1,12 @@
 import { FC } from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { WorldCreateProp } from "../../../navigation/WorldNavigation";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
-import LibButton from "../../../general/library/Button";
+import LibCard from "../../../general/library/Card";
+import LibFormButtons from "../../../general/library/FormButtons";
+import LibFormField from "../../../general/library/FormField";
+import LibInput from "../../../general/library/Input";
+import LibTextArea from "../../../general/library/TextArea";
 
 const WorldCreateScreen: FC<WorldCreateProp> = ({ navigation }) => {
   function closeModal() {
@@ -13,16 +17,27 @@ const WorldCreateScreen: FC<WorldCreateProp> = ({ navigation }) => {
     closeModal();
   }
 
+  function cancel() {
+    closeModal();
+  }
+
   return (
     <ScreenWrapper>
-      <View>
-        <LibButton mode="outline" onPress={closeModal}>
-          Cancel
-        </LibButton>
-        <LibButton onPress={save}>Save</LibButton>
-      </View>
+      <LibCard>
+        <LibFormField label="Name">
+          <LibInput />
+        </LibFormField>
+
+        <LibFormField label="Description">
+          <LibTextArea placeholder="optional" />
+        </LibFormField>
+
+        <LibFormButtons onSave={save} onCancel={cancel} />
+      </LibCard>
     </ScreenWrapper>
   );
 };
+
+const styles = StyleSheet.create({});
 
 export default WorldCreateScreen;
