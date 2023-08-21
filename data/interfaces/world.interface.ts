@@ -1,5 +1,5 @@
 export interface IWorld {
-  id: number;
+  id?: number;
   name: string;
   description: string | null;
   created_at?: string;

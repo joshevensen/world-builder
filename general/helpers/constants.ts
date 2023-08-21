@@ -262,11 +262,13 @@ export const COLORS = {
     card: PALETTE.gray[600],
     header: PALETTE.gray[900],
     inputs: PALETTE.gray[200],
+    inputsError: PALETTE.red[200],
   },
   color: {
-    text: PALETTE.gray[100],
+    error: PALETTE.red[500],
     inputs: PALETTE.gray[800],
     muted: PALETTE.gray[400],
+    text: PALETTE.gray[100],
   },
 };
 

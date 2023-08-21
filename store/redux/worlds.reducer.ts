@@ -19,7 +19,13 @@ export const worldsSlice = createSlice({
   initialState,
   reducers: {
     addWorld: (state: worldsState, action: PayloadAction<IWorld>) => {
-      state.all.push(action.payload);
+      // TODO: Make this id correct
+      const world = {
+        id: Math.random() * 100,
+        ...action.payload,
+      };
+
+      state.all.push(world);
     },
     updateWorld: (state: worldsState, action: PayloadAction<IWorld>) => {
       state.all.map((world) => {
