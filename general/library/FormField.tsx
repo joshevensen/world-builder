@@ -6,7 +6,7 @@ import LibText from "./Text";
 type props = {
   children: any;
   label: string;
-  errorMessage: string | undefined;
+  errorMessage?: string | undefined;
 };
 
 const LibFormField: FC<props> = ({ children, label, errorMessage }) => {

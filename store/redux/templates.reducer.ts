@@ -58,6 +58,18 @@ export const selectTemplatesByName = createSelector(
   (templates) => _.orderBy(templates.all, ["name"], ["asc"])
 );
 
+export const selectTemmplatesByCategory = (categoryId: number) =>
+  createSelector(
+    (state: RootState) => state.templates,
+    (templates) => {
+      const templatesForCategory = templates.all.filter(
+        (template) => template.category_id === categoryId
+      );
+
+      return _.orderBy(templatesForCategory, ["name"], ["asc"]);
+    }
+  );
+
 export const selectActiveTemplate = createSelector(
   (state: RootState) => state.templates,
   (templates) => {

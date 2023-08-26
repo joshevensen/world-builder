@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { FC, useContext } from "react";
+const _ = require("lodash");
 
 import CONSTANTS from "../../../general/helpers/constants";
 import LibCard from "../../../general/library/Card";
@@ -27,7 +28,9 @@ const TemplateItem: FC<props> = ({
       <LibText style={styles.category}>{category?.name}</LibText>
       <LibText style={styles.name}>{name}</LibText>
       {description && (
-        <LibText style={styles.description}>{description}</LibText>
+        <LibText style={styles.description}>
+          {_.truncate(description, { length: 42 })}
+        </LibText>
       )}
     </LibCard>
   );

@@ -2,16 +2,18 @@ import { IEntry } from "../interfaces/entry.interface";
 import {
   CharacterTemplate,
   CityTemplate,
+  GodsTemplate,
   GuildTemplate,
+  HumansTemplate,
   WeaponTemplate,
 } from "./templates.data";
-import { AwesomeWorld } from "./worlds.data";
+import { AwesomeWorld, MostAwesomeWorld } from "./worlds.data";
 
 const JohnDoe: IEntry = {
   id: 1,
   world_id: AwesomeWorld.id,
-  template_id: CharacterTemplate.id,
-  category_id: CharacterTemplate.category_id,
+  template_id: HumansTemplate.id,
+  category_id: HumansTemplate.category_id,
   name: "John Doe",
   description: "A friend",
   created_at: new Date().toString(),
@@ -20,7 +22,7 @@ const JohnDoe: IEntry = {
 
 const JaneDoe: IEntry = {
   id: 2,
-  world_id: AwesomeWorld.id,
+  world_id: MostAwesomeWorld.id,
   template_id: CharacterTemplate.id,
   category_id: CharacterTemplate.category_id,
   name: "Jane Doe",
@@ -73,4 +75,15 @@ const Axe: IEntry = {
   updated_at: new Date().toString(),
 };
 
-export default [JohnDoe, JaneDoe, MerchantsGuild, MillsCreek, Sword, Axe];
+const Odin: IEntry = {
+  id: 7,
+  world_id: AwesomeWorld.id,
+  template_id: GodsTemplate.id,
+  category_id: GodsTemplate.category_id,
+  name: "Odin",
+  description: null,
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
+
+export default [JohnDoe, JaneDoe, MerchantsGuild, MillsCreek, Sword, Axe, Odin];

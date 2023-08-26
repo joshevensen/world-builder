@@ -5,7 +5,7 @@ import {
   ItemsCategory,
   PlacesCategory,
   PeopleCategory,
-} from "./categories.data";
+} from "../static/categories";
 import { AwesomeWorld, MostAwesomeWorld } from "./worlds.data";
 
 export const CharacterTemplate: ITemplate = {
@@ -121,6 +121,17 @@ export const GodsTemplate: ITemplate = {
   updated_at: new Date().toString(),
 };
 
+export const HumansTemplate: ITemplate = {
+  id: 7,
+  world_id: AwesomeWorld.id,
+  category_id: PeopleCategory.id,
+  name: "Humans",
+  description: null,
+  fields: [],
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
+
 export default [
   CharacterTemplate,
   GuildTemplate,
@@ -128,4 +139,5 @@ export default [
   WeaponTemplate,
   CountryTemplate,
   GodsTemplate,
+  HumansTemplate,
 ];

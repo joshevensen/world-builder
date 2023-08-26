@@ -4,19 +4,32 @@
 export const PALETTE = {
   black: "#0a0a0a",
   white: "#fafafa",
+  // gray: {
+  //   50: "#f8fafc",
+  //   100: "#f1f5f9",
+  //   200: "#e2e8f0",
+  //   300: "#cbd5e1",
+  //   400: "#94a3b8",
+  //   500: "#64748b",
+  //   600: "#475569",
+  //   700: "#334155",
+  //   800: "#1e293b",
+  //   900: "#0f172a",
+  //   950: "#020617",
+  // },
   gray: {
-    50: "#f8fafc",
-    100: "#f1f5f9",
-    200: "#e2e8f0",
-    300: "#cbd5e1",
-    400: "#94a3b8",
-    500: "#64748b",
-    600: "#475569",
-    700: "#334155",
-    800: "#1e293b",
-    900: "#0f172a",
-    950: "#020617",
+    50: "#efeff0",
+    100: "#e8e8ea",
+    200: "#d1d1d5",
+    300: "#5d5f6d",
+    400: "#2f3243",
+    500: "#181b2e",
+    600: "#131625",
+    700: "#0e101c",
+    800: "#0a0b12",
+    900: "#050509",
   },
+
   red: {
     50: "#fef2f2",
     100: "#fee2e2",
@@ -257,8 +270,12 @@ export const SIZE = {
 export const COLORS = {
   primary: PALETTE.orange[600],
 
+  borderColor: {
+    list: PALETTE.gray[400],
+  },
+
   backgroundColor: {
-    app: PALETTE.gray[800],
+    app: PALETTE.gray[900],
     card: PALETTE.gray[600],
     header: PALETTE.gray[900],
     inputs: PALETTE.gray[200],
@@ -267,7 +284,7 @@ export const COLORS = {
   color: {
     error: PALETTE.red[500],
     inputs: PALETTE.gray[800],
-    muted: PALETTE.gray[400],
+    muted: PALETTE.gray[300],
     text: PALETTE.gray[100],
   },
 };

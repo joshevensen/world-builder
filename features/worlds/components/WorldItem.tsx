@@ -22,7 +22,7 @@ const WorldItem: FC<props> = ({ id, name, description, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: CONSTANTS.SPACING[5],
+    marginTop: CONSTANTS.SPACING[5],
   },
 });
 

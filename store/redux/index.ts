@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import worldsReducer from "./worlds.reducer";
 import entriesReducer from "./entries.reducer";
 import templatesReducer from "./templates.reducer";
+import countsReducer from "./counts.reducer";
 
 const store = configureStore({
   reducer: {
+    counts: countsReducer,
     entries: entriesReducer,
     templates: templatesReducer,
     worlds: worldsReducer,

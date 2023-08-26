@@ -1,21 +1,16 @@
-import { FC, useContext } from "react";
-import { FlatList, StyleSheet, Text } from "react-native";
+import { FC } from "react";
 
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import { WorldViewProp } from "../../../navigation/MainNavigation";
-import { CategoriesContext } from "../../../store/context/categories.context";
-import CategoryItem from "../components/CategoryItem";
-import LibCard from "../../../general/library/Card";
-import { View } from "react-native";
 import { selectActiveWorld } from "../../../store/redux/worlds.reducer";
 import { useAppSelector } from "../../../general/helpers/hooks";
-import LibText from "../../../general/library/Text";
 import CONSTANTS from "../../../general/helpers/constants";
-import LibIcon from "../../../general/library/Icon";
+import LibList, { ListItem } from "../../../general/library/List";
+import categories from "../../../data/static/categories";
 
 const WorldViewScreen: FC<WorldViewProp> = ({ navigation }) => {
-  const categories = useContext(CategoriesContext);
   const world = useAppSelector(selectActiveWorld);
+  const categoryCounts = useAppSelector((state) => state.counts.categories);
 
   function goToEntryList(categoryId: number) {
     navigation.navigate("EntryList", { categoryId: categoryId });
@@ -30,99 +25,58 @@ const WorldViewScreen: FC<WorldViewProp> = ({ navigation }) => {
   }
 
   function goToWorldUpdate() {
-    if (world) {
+    if (world?.id) {
       navigation.navigate("WorldUpdate", { worldId: world.id });
     }
   }
 
+  const categoriesSection: ListItem[] = categories.map((category) => {
+    return {
+      id: category.id,
+      label: category.name,
+      subText: "0",
+      icon: category.icon,
+      includeArrow: true,
+      onPress: goToEntryList.bind("categoryId", category.id),
+    };
+  });
+
+  const otherSection: ListItem[] = [
+    {
+      id: "listsPage",
+      label: "Lists",
+      subText: world?.counts.lists.toString(),
+      icon: CONSTANTS.ICON.lists,
+      includeArrow: true,
+      onPress: goToListlist,
+    },
+    {
+      id: "templatesPage",
+      label: "Templates",
+      subText: world?.counts.templates.toString(),
+      icon: CONSTANTS.ICON.templates,
+      includeArrow: true,
+      onPress: goToTemplateList,
+    },
+    {
+      id: "settingsPage",
+      label: "Settings",
+      icon: CONSTANTS.ICON.settings,
+      includeArrow: true,
+      onPress: goToWorldUpdate,
+    },
+  ];
+
   return (
     <ScreenWrapper>
-      <View style={styles.categoriesContainer}>
-        <FlatList
-          data={categories}
-          keyExtractor={(category: any) => category.id}
-          ItemSeparatorComponent={() => (
-            <View style={{ height: CONSTANTS.SPACING[2] }} />
-          )}
-          renderItem={({ item }) => {
-            return (
-              <CategoryItem
-                name={item.name}
-                icon={item.icon}
-                count={3}
-                onPress={goToEntryList.bind("categoryId", item.id)}
-              />
-            );
-          }}
-          numColumns={2}
-        />
-      </View>
-
-      <View style={styles.otherContainer}>
-        <LibCard
-          style={styles.otherCard}
-          onPress={goToListlist}
-          includeArrow={true}
-        >
-          <View style={styles.cardContainer}>
-            <LibIcon
-              name={CONSTANTS.ICON.lists}
-              size={CONSTANTS.SIZE.icon.sm}
-            />
-            <LibText style={styles.cardText}>Lists</LibText>
-          </View>
-        </LibCard>
-
-        <LibCard
-          style={styles.otherCard}
-          onPress={goToTemplateList}
-          includeArrow={true}
-        >
-          <View style={styles.cardContainer}>
-            <LibIcon
-              name={CONSTANTS.ICON.templates}
-              size={CONSTANTS.SIZE.icon.sm}
-            />
-            <LibText style={styles.cardText}>Templates</LibText>
-          </View>
-        </LibCard>
-
-        <LibCard
-          style={styles.otherCard}
-          onPress={goToWorldUpdate}
-          includeArrow={true}
-        >
-          <View style={styles.cardContainer}>
-            <LibIcon
-              name={CONSTANTS.ICON.settings}
-              size={CONSTANTS.SIZE.icon.sm}
-            />
-            <LibText style={styles.cardText}>Settings</LibText>
-          </View>
-        </LibCard>
-      </View>
+      <LibList
+        sections={[
+          { title: "Entries", data: categoriesSection },
+          { title: "", data: otherSection },
+        ]}
+      />
     </ScreenWrapper>
   );
 };
-
-const styles = StyleSheet.create({
-  categoriesContainer: {
-    marginBottom: CONSTANTS.SPACING[8],
-  },
-  otherContainer: {
-    paddingHorizontal: CONSTANTS.SPACING[2],
-  },
-  otherCard: {
-    marginBottom: CONSTANTS.SPACING[4],
-  },
-  cardContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  cardText: {
-    marginLeft: CONSTANTS.SPACING[4],
-    fontSize: CONSTANTS.SIZE.font.lg,
-  },
-});
 
 export default WorldViewScreen;

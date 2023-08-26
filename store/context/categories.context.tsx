@@ -1,6 +1,6 @@
 import { FC, createContext, useState } from "react";
 import { ICategory } from "../../data/interfaces/category.interface";
-import categoriesData from "../../data/dummy/categories.data";
+import categoriesData from "../../data/static/categories";
 
 export const CategoriesContext = createContext<ICategory[]>([]);
 
