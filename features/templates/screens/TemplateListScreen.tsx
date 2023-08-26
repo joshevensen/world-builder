@@ -7,20 +7,13 @@ import { useAppDispatch, useAppSelector } from "../../../general/helpers/hooks";
 import {
   selectTemmplatesByCategory,
   setActiveTemplateId,
-} from "../../../store/redux/templates.reducer";
+} from "../../../store/templates.reducer";
 import LibList, { ListItem } from "../../../general/library/List";
 import { ITemplate } from "../../../data/interfaces/template.interface";
 import categories from "../../../data/static/categories";
 
 const TemplateListScreen: FC<TemplateListProp> = ({ navigation }) => {
   const dispatch = useAppDispatch();
-
-  function goToTemplate(templateId: number | undefined) {
-    if (templateId) {
-      dispatch(setActiveTemplateId(templateId));
-      navigation.navigate("TemplateView", { templateId: templateId });
-    }
-  }
 
   const categorySections: { title: string; data: ListItem[] }[] = [];
 
@@ -42,6 +35,13 @@ const TemplateListScreen: FC<TemplateListProp> = ({ navigation }) => {
       });
     }
   });
+
+  function goToTemplate(templateId: number | undefined) {
+    if (templateId) {
+      dispatch(setActiveTemplateId(templateId));
+      navigation.navigate("TemplateView", { templateId: templateId });
+    }
+  }
 
   return (
     <ScreenWrapper>

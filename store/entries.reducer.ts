@@ -1,4 +1,5 @@
 import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
+const _ = require("lodash");
 
 import entriesData from "../data/dummy/entries.data";
 import { IEntry, IEntryCreate } from "../data/interfaces/entry.interface";
@@ -59,6 +60,18 @@ export const {
   setActiveEntryId,
   unsetActiveEntryId,
 } = entriesSlice.actions;
+
+export const selectEntriesByCategory = (categoryId: string) =>
+  createSelector(
+    (state: RootState) => state.entries,
+    (entries) => {
+      const entriesForCategory = entries.all.filter(
+        (entry) => entry.category_id === categoryId
+      );
+
+      return _.orderBy(entriesForCategory, ["name"], ["asc"]);
+    }
+  );
 
 export const selectActiveEntry = createSelector(
   (state: RootState) => state.entries,

@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
     borderColor: CONSTANTS.COLORS.borderColor.list,
   },
   row: {
-    padding: CONSTANTS.SPACING[3],
+    paddingVertical: CONSTANTS.SPACING[2],
+    paddingHorizontal: CONSTANTS.SPACING[3],
     backgroundColor: CONSTANTS.COLORS.backgroundColor.card,
   },
   rowWithArrow: {

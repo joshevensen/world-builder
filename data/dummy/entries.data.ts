@@ -100,4 +100,40 @@ const Odin: IEntry = {
   updated_at: new Date().toString(),
 };
 
-export default [JohnDoe, JaneDoe, MerchantsGuild, MillsCreek, Sword, Axe, Odin];
+const Loki: IEntry = {
+  id: 8,
+  world_id: AwesomeWorld.id,
+  template_id: GodsTemplate.id,
+  category_id: GodsTemplate.category_id,
+  name: "Loki",
+  description: null,
+  fields: [],
+  relationships: [],
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
+
+const Thor: IEntry = {
+  id: 9,
+  world_id: AwesomeWorld.id,
+  template_id: GodsTemplate.id,
+  category_id: GodsTemplate.category_id,
+  name: "Thor",
+  description: null,
+  fields: [],
+  relationships: [],
+  created_at: new Date().toString(),
+  updated_at: new Date().toString(),
+};
+
+export default [
+  JohnDoe,
+  JaneDoe,
+  MerchantsGuild,
+  MillsCreek,
+  Sword,
+  Axe,
+  Odin,
+  Loki,
+  Thor,
+];

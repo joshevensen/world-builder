@@ -2,7 +2,7 @@ import { FC, useLayoutEffect } from "react";
 import { View } from "react-native";
 
 import { TemplateViewProp } from "../../../navigation/MainNavigation";
-import { selectActiveTemplate } from "../../../store/redux/templates.reducer";
+import { selectActiveTemplate } from "../../../store/templates.reducer";
 import { useAppSelector } from "../../../general/helpers/hooks";
 import LibText from "../../../general/library/Text";
 

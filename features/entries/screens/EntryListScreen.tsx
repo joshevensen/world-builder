@@ -1,17 +1,45 @@
 import { FC } from "react";
-import { FlatList } from "react-native";
+const _ = require("lodash");
 
-import entriesData from "../../../data/dummy/entries.data";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import { EntryListProp } from "../../../navigation/MainNavigation";
-import EntryItem from "../components/EntryItem";
+import LibList, { ListItem } from "../../../general/library/List";
+import { useAppSelector } from "../../../general/helpers/hooks";
+import { selectEntriesByCategory } from "../../../store/entries.reducer";
+import { IEntry } from "../../../data/interfaces/entry.interface";
+import { selectTemmplatesByCategory } from "../../../store/templates.reducer";
+import { ITemplate } from "../../../data/interfaces/template.interface";
 
 const EntryListScreen: FC<EntryListProp> = ({ route, navigation }) => {
   const categoryId = route.params.categoryId;
 
-  const entries = entriesData.filter(
-    (entry) => entry.category_id === categoryId
-  );
+  const entries = useAppSelector(selectEntriesByCategory(categoryId));
+  const templates = useAppSelector(selectTemmplatesByCategory(categoryId));
+
+  const templateSections: { title: string; data: ListItem[] }[] = [];
+
+  if (templates.length) {
+    templates.forEach((template: ITemplate) => {
+      const templateEntries = entries.filter(
+        (entry: IEntry) => entry.template_id === template.id
+      );
+
+      if (templateEntries.length) {
+        templateSections.push({
+          title: template.name,
+          data: templateEntries.map((entry: IEntry) => {
+            return {
+              id: entry.id,
+              label: entry.name,
+              description: _.truncate(entry.description, { length: 42 }),
+              includeArrow: true,
+              onPress: goToEntry.bind("entryId", entry.id),
+            };
+          }),
+        });
+      }
+    });
+  }
 
   function goToEntry(entryId: number) {
     navigation.navigate("EntryView", { entryId: entryId });
@@ -19,20 +47,7 @@ const EntryListScreen: FC<EntryListProp> = ({ route, navigation }) => {
 
   return (
     <ScreenWrapper>
-      <FlatList
-        data={entries}
-        keyExtractor={(item: any) => item.id}
-        renderItem={({ item }) => {
-          return (
-            <EntryItem
-              name={item.name}
-              description={item.description}
-              categoryId={item.category_id}
-              onPress={goToEntry.bind("entryId", item.id)}
-            />
-          );
-        }}
-      />
+      <LibList sections={templateSections} />
     </ScreenWrapper>
   );
 };

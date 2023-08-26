@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 import { useAppDispatch } from "../../../general/helpers/hooks";
 import { WorldCreateProp } from "../../../navigation/WorldNavigation";
-import { addWorld } from "../../../store/redux/worlds.reducer";
+import { addWorld } from "../../../store/worlds.reducer";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import LibCard from "../../../general/library/Card";
 import LibFormButtons from "../../../general/library/FormButtons";
