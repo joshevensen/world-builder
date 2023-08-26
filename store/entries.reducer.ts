@@ -1,7 +1,7 @@
 import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
 
-import entriesData from "../../data/dummy/entries.data";
-import { IEntry } from "../../data/interfaces/entry.interface";
+import entriesData from "../data/dummy/entries.data";
+import { IEntry, IEntryCreate } from "../data/interfaces/entry.interface";
 import { RootState } from ".";
 
 interface entriesState {
@@ -18,8 +18,18 @@ export const entriesSlice = createSlice({
   name: "entries",
   initialState,
   reducers: {
-    addEntry: (state, action: PayloadAction<IEntry>) => {
-      state.all.push(action.payload);
+    addEntry: (state, action: PayloadAction<IEntryCreate>) => {
+      // TODO: Replace this with api call that returns IEntry object
+      const entry = {
+        id: Math.random() * 100,
+        fields: [],
+        relationships: [],
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        ...action.payload,
+      };
+
+      state.all.push(entry);
     },
     updateEntry: (state, action: PayloadAction<IEntry>) => {
       state.all.map((entry) => {

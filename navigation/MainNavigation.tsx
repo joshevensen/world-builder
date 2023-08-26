@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import {
   createNativeStackNavigator,
   NativeStackScreenProps as ScreenProps,
@@ -6,7 +6,6 @@ import {
 
 import CONSTANTS from "../general/helpers/constants";
 import { ICategory } from "../data/interfaces/category.interface";
-import { CategoriesContext } from "../store/context/categories.context";
 import LibIconButton from "../general/library/IconButton";
 
 import WorldViewScreen from "../features/worlds/screens/WorldViewScreen";
@@ -18,11 +17,12 @@ import TemplateViewScreen from "../features/templates/screens/TemplateViewScreen
 import TemplateCreateScreen from "../features/templates/screens/TemplateCreateScreen";
 import TemplateUpdateScreen from "../features/templates/screens/TemplateUpdateScreen";
 import ListListScreen from "../features/lists/screens/ListListScreen";
+import categories from "../data/static/categories";
 
 type ParamList = {
   WorldView: { worldId: number };
   WorldUpdate: { worldId: number };
-  EntryList: { categoryId: number };
+  EntryList: { categoryId: string };
   EntryView: { entryId: number };
   TemplateList: undefined;
   TemplateCreate: undefined;
@@ -44,8 +44,6 @@ export type TemplateUpdateProp = ScreenProps<ParamList, "TemplateUpdate">;
 export type ListListProp = ScreenProps<ParamList, "ListList">;
 
 const MainNavigation: FC = () => {
-  const categories = useContext(CategoriesContext);
-
   return (
     <Stack.Navigator
       screenOptions={{

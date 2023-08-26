@@ -2,8 +2,11 @@ import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
 const _ = require("lodash");
 
 import { RootState } from ".";
-import templatesData from "../../data/dummy/templates.data";
-import { ITemplate } from "../../data/interfaces/template.interface";
+import templatesData from "../data/dummy/templates.data";
+import {
+  ITemplate,
+  ITemplateCreate,
+} from "../data/interfaces/template.interface";
 
 interface templatesState {
   all: ITemplate[];
@@ -19,8 +22,17 @@ export const templatesSlice = createSlice({
   name: "templates",
   initialState,
   reducers: {
-    addTemplate: (state, action: PayloadAction<ITemplate>) => {
-      state.all.push(action.payload);
+    addTemplate: (state, action: PayloadAction<ITemplateCreate>) => {
+      // TODO: Replace this with api call that returns ITemplate object
+      const template = {
+        id: Math.random() * 100,
+        fields: [],
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        ...action.payload,
+      };
+
+      state.all.push(template);
     },
     updateTemplate: (state, action: PayloadAction<ITemplate>) => {
       state.all.map((template) => {
@@ -58,7 +70,7 @@ export const selectTemplatesByName = createSelector(
   (templates) => _.orderBy(templates.all, ["name"], ["asc"])
 );
 
-export const selectTemmplatesByCategory = (categoryId: number) =>
+export const selectTemmplatesByCategory = (categoryId: string) =>
   createSelector(
     (state: RootState) => state.templates,
     (templates) => {

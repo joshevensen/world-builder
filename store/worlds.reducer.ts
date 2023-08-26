@@ -1,8 +1,8 @@
 import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from ".";
-import { IWorld } from "../../data/interfaces/world.interface";
-import worldsData from "../../data/dummy/worlds.data";
+import { IWorld, IWorldCreate } from "../data/interfaces/world.interface";
+import worldsData from "../data/dummy/worlds.data";
 
 interface worldsState {
   all: IWorld[];
@@ -18,10 +18,25 @@ export const worldsSlice = createSlice({
   name: "worlds",
   initialState,
   reducers: {
-    addWorld: (state: worldsState, action: PayloadAction<IWorld>) => {
-      // TODO: Make this id correct
+    addWorld: (state: worldsState, action: PayloadAction<IWorldCreate>) => {
+      // TODO: Replace this with api call that returns IWorld object
       const world = {
         id: Math.random() * 100,
+        counts: {
+          people: 0,
+          creatures: 0,
+          plants: 0,
+          items: 0,
+          organizations: 0,
+          places: 0,
+          events: 0,
+          knowledge: 0,
+          entries: 0,
+          lists: 0,
+          templates: 0,
+        },
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
         ...action.payload,
       };
 

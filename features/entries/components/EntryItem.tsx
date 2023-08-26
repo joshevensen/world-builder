@@ -8,7 +8,7 @@ import LibText from "../../../general/library/Text";
 type props = {
   name: string;
   description: string | null;
-  categoryId: number;
+  categoryId: string;
   onPress?(): void;
 };
 

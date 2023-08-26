@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../general/helpers/hooks";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import WorldItem from "../components/WorldItem";
 import { WorldListProp } from "../../../navigation/WorldNavigation";
-import { setActiveWorldId } from "../../../store/redux/worlds.reducer";
+import { setActiveWorldId } from "../../../store/worlds.reducer";
 
 const WorldListScreen: FC<WorldListProp> = ({ navigation }) => {
   const dispatch = useAppDispatch();

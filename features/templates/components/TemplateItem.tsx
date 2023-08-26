@@ -1,16 +1,16 @@
 import { StyleSheet } from "react-native";
-import { FC, useContext } from "react";
+import { FC } from "react";
 const _ = require("lodash");
 
 import CONSTANTS from "../../../general/helpers/constants";
 import LibCard from "../../../general/library/Card";
 import LibText from "../../../general/library/Text";
-import { CategoriesContext } from "../../../store/context/categories.context";
+import categories from "../../../data/static/categories";
 
 type props = {
   name: string;
   description: string | null;
-  categoryId: number;
+  categoryId: string;
   onPress?(): void;
 };
 
@@ -20,7 +20,6 @@ const TemplateItem: FC<props> = ({
   categoryId,
   onPress,
 }) => {
-  const categories = useContext(CategoriesContext);
   const category = categories.find((category) => category.id === categoryId);
 
   return (

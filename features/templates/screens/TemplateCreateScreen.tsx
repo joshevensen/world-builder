@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
@@ -7,16 +7,15 @@ import LibCard from "../../../general/library/Card";
 import LibFormButtons from "../../../general/library/FormButtons";
 import { useAppDispatch, useAppSelector } from "../../../general/helpers/hooks";
 import { ITemplate } from "../../../data/interfaces/template.interface";
-import { CategoriesContext } from "../../../store/context/categories.context";
 import { selectActiveWorld } from "../../../store/redux/worlds.reducer";
 import { addTemplate } from "../../../store/redux/templates.reducer";
 import LibFormField from "../../../general/library/FormField";
 import LibFormInput from "../../../general/library/FormInput";
+import categories from "../../../data/static/categories";
 
 const TemplateCreateScreen: FC<TemplateCreateProp> = ({ navigation }) => {
   const dispatch = useAppDispatch();
 
-  const categories = useContext(CategoriesContext);
   const world = useAppSelector(selectActiveWorld);
 
   const {

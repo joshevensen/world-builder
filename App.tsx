@@ -3,8 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider } from "react-redux";
 
-import store from "./store/redux";
-import CategoriesProvider from "./store/context/categories.context";
+import store from "./store";
 import WorldNavigation from "./navigation/WorldNavigation";
 
 export default function App() {
@@ -12,11 +11,9 @@ export default function App() {
     <>
       <StatusBar style="light" />
       <Provider store={store}>
-        <CategoriesProvider>
-          <NavigationContainer>
-            <WorldNavigation />
-          </NavigationContainer>
-        </CategoriesProvider>
+        <NavigationContainer>
+          <WorldNavigation />
+        </NavigationContainer>
       </Provider>
     </>
   );

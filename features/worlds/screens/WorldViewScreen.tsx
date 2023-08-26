@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import { WorldViewProp } from "../../../navigation/MainNavigation";
-import { selectActiveWorld } from "../../../store/redux/worlds.reducer";
+import { selectActiveWorld } from "../../../store/worlds.reducer";
 import { useAppSelector } from "../../../general/helpers/hooks";
 import CONSTANTS from "../../../general/helpers/constants";
 import LibList, { ListItem } from "../../../general/library/List";
@@ -10,9 +10,8 @@ import categories from "../../../data/static/categories";
 
 const WorldViewScreen: FC<WorldViewProp> = ({ navigation }) => {
   const world = useAppSelector(selectActiveWorld);
-  const categoryCounts = useAppSelector((state) => state.counts.categories);
 
-  function goToEntryList(categoryId: number) {
+  function goToEntryList(categoryId: string) {
     navigation.navigate("EntryList", { categoryId: categoryId });
   }
 

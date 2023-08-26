@@ -15,8 +15,13 @@ export interface IWorld {
     lists: number;
     templates: number;
   };
-  created_at?: string;
-  updated_at?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IWorldCreate {
+  name: string;
+  description: string | null;
 }
 
 export type ICount = {

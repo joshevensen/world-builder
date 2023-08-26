@@ -16,6 +16,8 @@ const JohnDoe: IEntry = {
   category_id: HumansTemplate.category_id,
   name: "John Doe",
   description: "A friend",
+  fields: [],
+  relationships: [],
   created_at: new Date().toString(),
   updated_at: new Date().toString(),
 };
@@ -27,6 +29,8 @@ const JaneDoe: IEntry = {
   category_id: CharacterTemplate.category_id,
   name: "Jane Doe",
   description: null,
+  fields: [],
+  relationships: [],
   created_at: new Date().toString(),
   updated_at: new Date().toString(),
 };
@@ -38,6 +42,8 @@ const MerchantsGuild: IEntry = {
   category_id: GuildTemplate.category_id,
   name: "Merchant's Guild",
   description: null,
+  fields: [],
+  relationships: [],
   created_at: new Date().toString(),
   updated_at: new Date().toString(),
 };
@@ -49,6 +55,8 @@ const MillsCreek: IEntry = {
   category_id: CityTemplate.category_id,
   name: "Mills Creek",
   description: null,
+  fields: [],
+  relationships: [],
   created_at: new Date().toString(),
   updated_at: new Date().toString(),
 };
@@ -60,6 +68,8 @@ const Sword: IEntry = {
   category_id: WeaponTemplate.category_id,
   name: "Sword",
   description: null,
+  fields: [],
+  relationships: [],
   created_at: new Date().toString(),
   updated_at: new Date().toString(),
 };
@@ -71,6 +81,8 @@ const Axe: IEntry = {
   category_id: WeaponTemplate.category_id,
   name: "Axe",
   description: null,
+  fields: [],
+  relationships: [],
   created_at: new Date().toString(),
   updated_at: new Date().toString(),
 };
@@ -82,6 +94,8 @@ const Odin: IEntry = {
   category_id: GodsTemplate.category_id,
   name: "Odin",
   description: null,
+  fields: [],
+  relationships: [],
   created_at: new Date().toString(),
   updated_at: new Date().toString(),
 };
