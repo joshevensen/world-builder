@@ -1,19 +1,27 @@
-import { FC, useState } from "react";
+import { FC, useLayoutEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import { TemplateCreateProp } from "../../../navigation/MainNavigation";
-import LibCard from "../../../general/library/Card";
-import LibFormButtons from "../../../general/library/FormButtons";
 import { useAppDispatch, useAppSelector } from "../../../general/helpers/hooks";
 import { ITemplate } from "../../../data/interfaces/template.interface";
 import { selectActiveWorld } from "../../../store/worlds.reducer";
 import { addTemplate } from "../../../store/templates.reducer";
-import LibFormField from "../../../general/library/FormField";
-import LibFormInput from "../../../general/library/FormInput";
+import LibInput from "../../../general/library/Input";
 import categories from "../../../data/static/categories";
+import LibButton from "../../../general/library/Button";
 
 const TemplateCreateScreen: FC<TemplateCreateProp> = ({ navigation }) => {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <LibButton mode="flat" onPress={handleSubmit(save)}>
+          Done
+        </LibButton>
+      ),
+    });
+  }, []);
+
   const dispatch = useAppDispatch();
 
   const world = useAppSelector(selectActiveWorld);
@@ -24,7 +32,7 @@ const TemplateCreateScreen: FC<TemplateCreateProp> = ({ navigation }) => {
     formState: { errors },
   } = useForm<ITemplate>({
     defaultValues: {
-      world_id: world?.id,
+      world_id: world!.id,
       category_id: categories[0].id,
       name: "",
       description: "",
@@ -37,49 +45,30 @@ const TemplateCreateScreen: FC<TemplateCreateProp> = ({ navigation }) => {
     navigation.goBack();
   }
 
-  function cancel() {
-    navigation.goBack();
-  }
-
-  const [value, setValue] = useState(null);
-
-  const items = [
-    { label: "Apple", value: "apple" },
-    { label: "Banana", value: "banana" },
-  ];
-
   return (
     <ScreenWrapper>
-      <LibCard>
-        <LibFormField label="Name" errorMessage={errors.name?.message}>
-          <LibFormInput
-            name="name"
-            control={control}
-            rules={{
-              required: "Name is required",
-            }}
-            errors={errors.name}
-          />
-        </LibFormField>
+      <LibInput
+        label="Name"
+        name="name"
+        control={control}
+        rules={{
+          required: "Name is required",
+        }}
+        errors={errors.name}
+      />
 
-        <LibFormField
-          label="Description"
-          errorMessage={errors.description?.message}
-        >
-          <LibFormInput
-            name="description"
-            control={control}
-            rules={{
-              required: false,
-            }}
-            errors={errors.description}
-            isMultiline={true}
-            placeholder="optional"
-          />
-        </LibFormField>
-
-        <LibFormButtons onSave={handleSubmit(save)} onCancel={cancel} />
-      </LibCard>
+      <LibInput
+        label="Description"
+        name="description"
+        control={control}
+        rules={{
+          required: false,
+        }}
+        errors={errors.description}
+        isMultiline={true}
+        includeMargins={true}
+        placeholder="optional"
+      />
     </ScreenWrapper>
   );
 };

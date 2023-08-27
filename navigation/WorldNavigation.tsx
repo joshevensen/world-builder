@@ -7,10 +7,10 @@ import {
 import CONSTANTS from "../general/helpers/constants";
 import WorldListScreen from "../features/worlds/screens/WorldListScreen";
 import WorldCreateScreen from "../features/worlds/screens/WorldCreateScreen";
-import LibIconButton from "../general/library/IconButton";
 import MainNavigation from "./MainNavigation";
 import { useAppSelector } from "../general/helpers/hooks";
 import { IWorld } from "../data/interfaces/world.interface";
+import LibButton from "../general/library/Button";
 
 type ParamList = {
   WorldList: undefined;
@@ -46,13 +46,14 @@ const WorldNavigation: FC = () => {
         options={({ navigation }) => ({
           headerTitle: "Worlds",
           headerRight: ({ tintColor }) => (
-            <LibIconButton
+            <LibButton
+              mode="icon"
+              icon={CONSTANTS.ICON.add}
+              iconSize={CONSTANTS.SIZE.icon.sm}
+              color={tintColor}
               onPress={() => {
                 navigation.navigate("WorldCreate");
               }}
-              icon={CONSTANTS.ICON.add}
-              color={tintColor}
-              size={CONSTANTS.SIZE.icon.sm}
             />
           ),
         })}
@@ -62,17 +63,18 @@ const WorldNavigation: FC = () => {
         component={WorldCreateScreen}
         options={({ navigation }) => ({
           presentation: "modal",
-          headerTitle: "Create World",
-          headerRight: ({ tintColor }) => (
-            <LibIconButton
+          headerTitle: "New World",
+          headerLeft: () => (
+            <LibButton
+              mode="flat"
               onPress={() => {
                 navigation.goBack();
               }}
-              icon={CONSTANTS.ICON.close}
-              color={tintColor}
-              size={CONSTANTS.SIZE.icon.sm}
-            />
+            >
+              Cancel
+            </LibButton>
           ),
+          headerRight: () => <LibButton mode="flat">Done</LibButton>,
         })}
       />
 
@@ -85,7 +87,7 @@ const WorldNavigation: FC = () => {
           );
 
           return {
-            headerTitle: world?.name,
+            headerTitle: world!.name,
           };
         }}
       />

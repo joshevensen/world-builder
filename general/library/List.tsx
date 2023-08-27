@@ -25,17 +25,10 @@ const LibList: FC<props> = ({ sections }) => {
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => {
         return (
-          <View>
+          <View style={styles.container}>
             <Pressable onPress={item.onPress}>
-              <View
-                style={[styles.row, item.includeArrow && styles.rowWithArrow]}
-              >
-                <View
-                  style={[
-                    styles.left,
-                    item.includeArrow && styles.leftWithArrow,
-                  ]}
-                >
+              <View style={styles.row}>
+                <View style={styles.left}>
                   {item.icon && (
                     <LibIcon
                       style={styles.rowIcon}
@@ -45,16 +38,11 @@ const LibList: FC<props> = ({ sections }) => {
                   )}
                   <View>
                     <LibText style={styles.rowLabel}>{item.label}</LibText>
-                    {item.description && (
-                      <LibText style={styles.rowDescription}>
-                        {item.description}
-                      </LibText>
-                    )}
                   </View>
                 </View>
 
                 <View style={styles.right}>
-                  {item.includeArrow && (
+                  {item.subText && (
                     <Text style={styles.rowSubText}>{item.subText}</Text>
                   )}
                   {item.includeArrow && (
@@ -65,6 +53,18 @@ const LibList: FC<props> = ({ sections }) => {
                   )}
                 </View>
               </View>
+              {item.description && (
+                <View
+                  style={[
+                    !!item.icon && styles.descriptionContainerWithIcon,
+                    item.includeArrow && styles.descriptionContainerWithArrow,
+                  ]}
+                >
+                  <LibText style={styles.description}>
+                    {item.description}
+                  </LibText>
+                </View>
+              )}
             </Pressable>
           </View>
         );
@@ -88,16 +88,16 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: CONSTANTS.COLORS.borderColor.list,
   },
-  row: {
-    paddingVertical: CONSTANTS.SPACING[2],
-    paddingHorizontal: CONSTANTS.SPACING[3],
+  container: {
     backgroundColor: CONSTANTS.COLORS.backgroundColor.card,
+    paddingRight: CONSTANTS.SPACING[1],
+    paddingLeft: CONSTANTS.SPACING[3],
+    paddingVertical: CONSTANTS.SPACING[2],
   },
-  rowWithArrow: {
+  row: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingRight: CONSTANTS.SPACING[1],
   },
   rowIcon: {
     marginRight: CONSTANTS.SPACING[3],
@@ -109,16 +109,10 @@ const styles = StyleSheet.create({
     color: CONSTANTS.COLORS.color.muted,
     fontSize: CONSTANTS.SIZE.font.md,
   },
-  rowDescription: {
-    marginTop: CONSTANTS.SPACING[0.5],
-    color: CONSTANTS.COLORS.color.muted,
-  },
   left: {
+    flexShrink: 1,
     flexDirection: "row",
     alignItems: "center",
-  },
-  leftWithArrow: {
-    flexShrink: 1,
   },
   right: {
     flexDirection: "row",
@@ -126,6 +120,16 @@ const styles = StyleSheet.create({
   },
   arrowIcon: {
     marginLeft: CONSTANTS.SPACING[2],
+  },
+  descriptionContainerWithIcon: {
+    paddingLeft: CONSTANTS.SPACING[9],
+  },
+  descriptionContainerWithArrow: {
+    paddingRight: CONSTANTS.SPACING[10],
+  },
+  description: {
+    marginTop: CONSTANTS.SPACING[0.5],
+    color: CONSTANTS.COLORS.color.muted,
   },
 });
 

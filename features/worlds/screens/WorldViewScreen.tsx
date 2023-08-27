@@ -11,6 +11,11 @@ import categories from "../../../data/static/categories";
 const WorldViewScreen: FC<WorldViewProp> = ({ navigation }) => {
   const world = useAppSelector(selectActiveWorld);
 
+  if (!world) {
+    navigation.goBack();
+    return <></>;
+  }
+
   function goToEntryList(categoryId: string) {
     navigation.navigate("EntryList", { categoryId: categoryId });
   }

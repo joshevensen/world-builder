@@ -6,7 +6,6 @@ import {
 
 import CONSTANTS from "../general/helpers/constants";
 import { ICategory } from "../data/interfaces/category.interface";
-import LibIconButton from "../general/library/IconButton";
 
 import WorldViewScreen from "../features/worlds/screens/WorldViewScreen";
 import WorldUpdateScreen from "../features/worlds/screens/WorldUpdateScreen";
@@ -15,11 +14,12 @@ import EntryViewScreen from "../features/entries/screens/EntryViewScreen";
 import TemplateListScreen from "../features/templates/screens/TemplateListScreen";
 import TemplateViewScreen from "../features/templates/screens/TemplateViewScreen";
 import TemplateCreateScreen from "../features/templates/screens/TemplateCreateScreen";
-import TemplateUpdateScreen from "../features/templates/screens/TemplateUpdateScreen";
 import ListListScreen from "../features/lists/screens/ListListScreen";
 import categories from "../data/static/categories";
+import LibButton from "../general/library/Button";
 
 type ParamList = {
+  World: undefined;
   WorldView: { worldId: number };
   WorldUpdate: { worldId: number };
   EntryList: { categoryId: string };
@@ -27,7 +27,6 @@ type ParamList = {
   TemplateList: undefined;
   TemplateCreate: undefined;
   TemplateView: { templateId: number };
-  TemplateUpdate: { templateId: number };
   ListList: undefined;
 };
 
@@ -40,7 +39,6 @@ export type EntryViewProp = ScreenProps<ParamList, "EntryView">;
 export type TemplateListProp = ScreenProps<ParamList, "TemplateList">;
 export type TemplateCreateProp = ScreenProps<ParamList, "TemplateCreate">;
 export type TemplateViewProp = ScreenProps<ParamList, "TemplateView">;
-export type TemplateUpdateProp = ScreenProps<ParamList, "TemplateUpdate">;
 export type ListListProp = ScreenProps<ParamList, "ListList">;
 
 const MainNavigation: FC = () => {
@@ -104,13 +102,14 @@ const MainNavigation: FC = () => {
           options={({ navigation }) => ({
             headerTitle: "Templates",
             headerRight: ({ tintColor }) => (
-              <LibIconButton
+              <LibButton
+                mode="icon"
+                icon={CONSTANTS.ICON.add}
+                iconSize={CONSTANTS.SIZE.icon.sm}
+                color={tintColor}
                 onPress={() => {
                   navigation.navigate("TemplateCreate");
                 }}
-                icon={CONSTANTS.ICON.add}
-                color={tintColor}
-                size={CONSTANTS.SIZE.icon.sm}
               />
             ),
           })}
@@ -118,14 +117,23 @@ const MainNavigation: FC = () => {
         <Stack.Screen
           name="TemplateCreate"
           component={TemplateCreateScreen}
-          options={{ presentation: "modal", headerTitle: "Create Template" }}
+          options={({ navigation }) => ({
+            presentation: "modal",
+            headerTitle: "New Template",
+            headerLeft: () => (
+              <LibButton
+                mode="flat"
+                onPress={() => {
+                  navigation.goBack();
+                }}
+              >
+                Cancel
+              </LibButton>
+            ),
+            headerRight: () => <LibButton mode="flat">Done</LibButton>,
+          })}
         />
         <Stack.Screen name="TemplateView" component={TemplateViewScreen} />
-        <Stack.Screen
-          name="TemplateUpdate"
-          component={TemplateUpdateScreen}
-          options={{ headerTitle: "Update Template" }}
-        />
       </Stack.Group>
 
       {/**

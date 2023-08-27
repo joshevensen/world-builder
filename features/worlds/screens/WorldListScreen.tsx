@@ -1,15 +1,22 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { FlatList } from "react-native";
 
 import { useAppDispatch, useAppSelector } from "../../../general/helpers/hooks";
 import ScreenWrapper from "../../../general/wrappers/ScreenWrapper";
 import WorldItem from "../components/WorldItem";
 import { WorldListProp } from "../../../navigation/WorldNavigation";
-import { setActiveWorldId } from "../../../store/worlds.reducer";
+import {
+  setActiveWorldId,
+  unsetActiveWorldId,
+} from "../../../store/worlds.reducer";
 
 const WorldListScreen: FC<WorldListProp> = ({ navigation }) => {
   const dispatch = useAppDispatch();
   const worlds = useAppSelector((state) => state.worlds.all);
+
+  useEffect(() => {
+    dispatch(unsetActiveWorldId());
+  }, []);
 
   function goToWorld(worldId: number) {
     dispatch(setActiveWorldId(worldId));
